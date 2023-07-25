@@ -1,5 +1,5 @@
 class TNode {
-  value: number;
+  readonly value: number;
   less: TNode | null;
   more: TNode | null;
 
@@ -13,3 +13,5 @@ class TNode {
     return this.value - other.value;
   }
 }
+
+export default TNode;
