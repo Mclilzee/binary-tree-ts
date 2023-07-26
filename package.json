@@ -1,10 +1,13 @@
 {
   "name": "binary-tree",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "type": "module",
+  "main": "dist/bundle.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "server": "webpack serve",
+    "program": "webpack && node ."
   },
   "keywords": [],
   "author": "",
@@ -13,7 +16,9 @@
   "devDependencies": {
     "jest": "^29.6.1",
     "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
