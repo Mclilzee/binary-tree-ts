@@ -23,7 +23,7 @@ describe("Builds the tree correctly on initalization", () => {
   });
 
   test("Tree root is overwriten with new values", () => {
-    tree.insert(20).insert(100).insert(-5);
+    tree.add(20).add(100).add(-5);
 
     const numbers = [1];
     tree.buildNewTree(numbers);
@@ -34,7 +34,7 @@ describe("Builds the tree correctly on initalization", () => {
 
   test("New tree created with no root if empty array passed", () => {
     tree = new BinaryTree(5);
-    tree.insert(6).insert(4);
+    tree.add(6).add(4);
     expect(tree.root!.value).toBe(5);
     expect(tree.root!.right!.value).toBe(6);
     expect(tree.root!.left!.value).toBe(4);

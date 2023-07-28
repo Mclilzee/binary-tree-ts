@@ -2,30 +2,30 @@ import TNode from "./TNode";
 class BinaryTree {
   root: TNode | null;
 
-  constructor(number?: number) {
-    if (typeof number === "number") {
-      this.root = new TNode(number);
+  constructor(value?: number) {
+    if (typeof value === "number") {
+      this.root = new TNode(value);
     } else {
       this.root = null;
     }
   }
 
-  buildNewTree(numbers: number[]) {
-    if (numbers.length === 0) {
+  buildNewTree(values: number[]) {
+    if (values.length === 0) {
       this.root = null;
       return;
     }
 
-    const root = new TNode(numbers[0]);
-    for (let i = 1; i < numbers.length; i++) {
-      const node = new TNode(numbers[i]);
-      this.traverse(root, node);
+    const root = new TNode(values[0]);
+    for (let i = 1; i < values.length; i++) {
+      const node = new TNode(values[i]);
+      this.insert(root, node);
     }
 
     this.root = root;
   }
 
-  insert(value: number | TNode): BinaryTree {
+  add(value: number | TNode): BinaryTree {
     let node: TNode;
 
     if (typeof value == "number") {
@@ -37,52 +37,45 @@ class BinaryTree {
     if (this.root === null) {
       this.root = node;
     } else {
-      this.traverse(this.root, node);
+      this.insert(this.root, node);
     }
     return this;
   }
 
-  delete(number: number) {
-    if (this.root === null) {
-      return;
-    }
-
-    if (this.root.value === number) {
-      this.root = null;
-    }
-
-    // let left: TNode | null;
-    // let right: TNode | null;
-    // if (this.root !== null && this.root.value === numer) {
-    // }
-    // this.deleteNode(this.root, number);
-  }
-
-  private deleteNode(node: TNode | null, value: number) {
-    if (node === null) {
-      return;
-    }
-
-    if (node.value === value) {
-      node = null;
-    }
-
-  }
-
-  private traverse(root: TNode, node: TNode) {
-    if (node.value < root!.value) {
+  private insert(root: TNode, node: TNode) {
+    if (node.value < root.value) {
       if (root.left !== null) {
-        this.traverse(root!.left, node);
+        this.insert(root.left, node);
       } else {
         root.left = node;
       }
 
     } else if (node.value > root!.value) {
       if (root.right !== null) {
-        this.traverse(root!.right, node)
+        this.insert(root!.right, node)
       } else {
         root.right = node;
       }
+    }
+  }
+
+  remove(value: number) {
+    if (this.root === null) {
+      return;
+    }
+
+    if (this.root.value === value) {
+      this.root = null;
+    } else if (value > this.root.value && this.root.right !== null) {
+      this.deleteNode(this.root, this.root.right, value);
+    } else if (value < this.root.value && this.root.left !== null) {
+      this.deleteNode(this.root, this.root.left, value);
+    }
+  }
+
+  private deleteNode(parent: TNode, node: TNode, value: number) {
+    if (node.value === value) {
+      parent.right = node.right;
     }
   }
 }
