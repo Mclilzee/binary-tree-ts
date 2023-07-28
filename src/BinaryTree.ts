@@ -6,7 +6,7 @@ class BinaryTree {
     this.root = this.buildTree(numbers);
   }
 
-  buildTree(numbers: number[]): TNode {
+  private buildTree(numbers: number[]): TNode {
     if (numbers.length === 0) {
       return new TNode(0);
     }
@@ -20,26 +20,27 @@ class BinaryTree {
     return root;
   }
 
-  add(next: TNode) {
-    this.insert(this.root, next);
+  add(number: number) {
+    const node = new TNode(number);
+    this.insert(this.root, node);
   }
 
-  private insert(root: TNode, next: TNode) {
-    if (root.value === next.value) {
+  private insert(root: TNode, node: TNode) {
+    if (root.value === node.value) {
       return;
     }
 
-    if (next.value < root.value) {
+    if (node.value < root.value) {
       if (root.left !== null) {
-        this.insert(root.left, next);
+        this.insert(root.left, node);
       } else {
-        root.left = next;
+        root.left = node;
       }
     } else {
       if (root.right !== null) {
-        this.insert(root.right, next)
+        this.insert(root.right, node)
       } else {
-        root.right = next;
+        root.right = node;
       }
     }
   }
