@@ -3,21 +3,22 @@ import BinaryTree from '../BinaryTree';
 import TNode from '../TNode';
 
 describe("Inetialize correctly", () => {
-  test("If no number provided, root value is 0", () => {
+  test("If no number provided, there is no root", () => {
     const tree = new BinaryTree();
-    expect(tree.root.value).toBe(0);
+    expect(tree.root).toBeNull();
   })
 
   test("Tree intalize with correct root value", () => {
     let tree = new BinaryTree(0);
-    expect(tree.root.value).toBe(0);
+    expect(tree.root!.value).toBe(0);
 
     tree = new BinaryTree(2);
-    expect(tree.root.value).toBe(2);
+    expect(tree.root!.value).toBe(2);
   })
 })
 
-describe("Add to the right correctly", () => {
+describe("Add nodes to the correct position", () => {
+
   test("Add to the right correctly", () => {
     const tree = new BinaryTree(2);
     tree.insert(6);
@@ -95,21 +96,19 @@ describe("Builds the tree correctly on initalization", () => {
     const numbers = [1];
     tree.buildNewTree(numbers);
     expect(tree.root!.value).toBe(1);
-    expect(tree.root.left).toBeNull();
-    expect(tree.root.right).toBeNull();
+    expect(tree.root!.left).toBeNull();
+    expect(tree.root!.right).toBeNull();
   });
 
-  test("New tree created with root 0 if empty array passed", () => {
+  test("New tree created with no root if empty array passed", () => {
     tree = new BinaryTree(5);
     tree.insert(6).insert(4);
-    expect(tree.root.value).toBe(5);
-    expect(tree.root.right!.value).toBe(6);
-    expect(tree.root.left!.value).toBe(4);
+    expect(tree.root!.value).toBe(5);
+    expect(tree.root!.right!.value).toBe(6);
+    expect(tree.root!.left!.value).toBe(4);
 
     tree.buildNewTree([]);
-    expect(tree.root.value).toBe(0);
-    expect(tree.root.right).toBeNull();
-    expect(tree.root.left).toBeNull();
+    expect(tree.root!).toBeNull();
   })
 
   test("Return correct right link when more values given", () => {
@@ -181,3 +180,17 @@ describe("Builds the tree correctly on initalization", () => {
   });
 });;
 
+describe.skip("Deletes correct elements", () => {
+  test("Root deletion resets root value to 0", () => {
+    const tree = new BinaryTree(5);
+    tree.delete(5);
+    expect(tree.root!.value).toBeNull();
+  })
+
+  test("Delete correct right node", () => {
+    const tree = new BinaryTree(10);
+    tree.insert(15);
+    tree.delete(15);
+    expect(tree.root!.right!.value).toBeNull()
+  })
+})

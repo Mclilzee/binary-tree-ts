@@ -1,18 +1,18 @@
 import TNode from "./TNode";
 class BinaryTree {
-  root: TNode;
+  root: TNode | null;
 
   constructor(number?: number) {
-    if (number) {
+    if (typeof number === "number") {
       this.root = new TNode(number);
     } else {
-      this.root = new TNode(0);
+      this.root = null;
     }
   }
 
   buildNewTree(numbers: number[]) {
     if (numbers.length === 0) {
-      this.root = new TNode(0);
+      this.root = null;
       return;
     }
 
@@ -34,11 +34,24 @@ class BinaryTree {
       node = value;
     }
 
-    this.traverse(this.root, node);
+    if (this.root === null) {
+      this.root = node;
+    } else {
+      this.traverse(this.root, node);
+    }
     return this;
   }
 
   delete(number: number) {
+    if (this.root === null) {
+      return;
+    }
+
+    this.deleteNode(this.root, number);
+  }
+
+  private deleteNode(node: TNode, value: number) {
+
   }
 
   private traverse(root: TNode, node: TNode) {
