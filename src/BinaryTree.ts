@@ -47,10 +47,25 @@ class BinaryTree {
       return;
     }
 
-    this.deleteNode(this.root, number);
+    if (this.root.value === number) {
+      this.root = null;
+    }
+
+    // let left: TNode | null;
+    // let right: TNode | null;
+    // if (this.root !== null && this.root.value === numer) {
+    // }
+    // this.deleteNode(this.root, number);
   }
 
-  private deleteNode(node: TNode, value: number) {
+  private deleteNode(node: TNode | null, value: number) {
+    if (node === null) {
+      return;
+    }
+
+    if (node.value === value) {
+      node = null;
+    }
 
   }
 

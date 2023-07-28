@@ -180,17 +180,25 @@ describe("Builds the tree correctly on initalization", () => {
   });
 });;
 
-describe.skip("Deletes correct elements", () => {
-  test("Root deletion resets root value to 0", () => {
-    const tree = new BinaryTree(5);
+describe("Deletes correct elements", () => {
+  test("Delete throws no error if root is null", () => {
+    const tree = new BinaryTree();
     tree.delete(5);
-    expect(tree.root!.value).toBeNull();
+    expect(tree.root).toBeNull();
   })
 
-  test("Delete correct right node", () => {
+  test("Delete root if exist", () => {
     const tree = new BinaryTree(10);
-    tree.insert(15);
-    tree.delete(15);
-    expect(tree.root!.right!.value).toBeNull()
+    tree.delete(10);
+    expect(tree.root).toBeNull()
+  })
+
+  test("Only deletes when value is found", () => {
+    const tree = new BinaryTree(10);
+    tree.delete(5);
+    expect(tree.root!.value).toBe(10);
+
+    tree.delete(10);
+    expect(tree.root).toBeNull();
   })
 })
