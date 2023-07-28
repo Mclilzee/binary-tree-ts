@@ -3,8 +3,17 @@ import buildTree from "./tree-builder";
 import TNode from "./TNode";
 import BinaryTree from "./tree-builder";
 
-const numbers = [15, 3, 45, 56, 12, 12, 6, 34, 7, -2, 3, 0, 1, 54, 7, 2];
+const numbers = createRandomNumbers(100);
 const tree = new BinaryTree(numbers);
+
+function createRandomNumbers(amount: number): number[] {
+  const numbers = [];
+  for (let i = 0; i < amount; i++) {
+    numbers.push(Math.floor(Math.random() * 100));
+  }
+
+  return numbers;
+}
 
 function prettyPrint(node: TNode, prefix: string = "", isLeft = true) {
   if (node === null) {
@@ -20,3 +29,4 @@ function prettyPrint(node: TNode, prefix: string = "", isLeft = true) {
 };
 
 prettyPrint(tree.root);
+
