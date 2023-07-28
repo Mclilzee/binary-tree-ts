@@ -1,12 +1,12 @@
 class TNode {
   readonly value: number;
-  less: TNode | null;
-  more: TNode | null;
+  left: TNode | null;
+  right: TNode | null;
 
   constructor(value: number) {
     this.value = value;
-    this.less = null;
-    this.more = null;
+    this.left = null;
+    this.right = null;
   }
 
   compareTo(other: TNode): number {
