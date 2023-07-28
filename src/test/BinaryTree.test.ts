@@ -1,5 +1,6 @@
 import { describe, expect, test, beforeEach } from '@jest/globals';
 import BinaryTree from '../BinaryTree';
+import TNode from '../TNode';
 
 describe("Inetialize correctly", () => {
   test("If no number provided, root value is 0", () => {
@@ -16,7 +17,7 @@ describe("Inetialize correctly", () => {
   })
 })
 
-describe("Add nodes to tree in the correct position", () => {
+describe("Add to the right correctly", () => {
   test("Add to the right correctly", () => {
     const tree = new BinaryTree(2);
     tree.insert(6);
@@ -28,6 +29,22 @@ describe("Add nodes to tree in the correct position", () => {
     tree.insert(2);
     expect(tree.root!.left!.value).toBe(2);
   });
+
+  test("Add both to left and right", () => {
+    const tree = new BinaryTree(5);
+    tree.insert(2);
+    tree.insert(7);
+    expect(tree.root!.left!.value).toBe(2);
+    expect(tree.root!.right!.value).toBe(7);
+  })
+
+  test("Adding works by passing TNode", () => {
+    const tree = new BinaryTree(5);
+    tree.insert(new TNode(2));
+    tree.insert(new TNode(7));
+    expect(tree.root!.left!.value).toBe(2);
+    expect(tree.root!.right!.value).toBe(7);
+  })
 
   test("Skips adding duplicates", () => {
     const tree = new BinaryTree(5);

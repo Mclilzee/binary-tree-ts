@@ -25,10 +25,16 @@ class BinaryTree {
     this.root = root;
   }
 
-  insert(number: number): BinaryTree {
-    const node = new TNode(number);
-    this.traverse(this.root, node);
+  insert(value: number | TNode): BinaryTree {
+    let node: TNode;
 
+    if (typeof value == "number") {
+      node = new TNode(value);
+    } else {
+      node = value;
+    }
+
+    this.traverse(this.root, node);
     return this;
   }
 
