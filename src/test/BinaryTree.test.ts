@@ -1,5 +1,5 @@
-import { test, expect } from '@jest/globals';
-import BinaryTree from '../tree-builder';
+import { expect, test } from '@jest/globals';
+import BinaryTree from '../BinaryTree';
 
 test("Return no error when empty array passed", () => {
   const numbers: number[] = [];

@@ -14,30 +14,30 @@ class BinaryTree {
     const root = new TNode(numbers[0]);
     for (let i = 1; i < numbers.length; i++) {
       const next = new TNode(numbers[i]);
-      this.traverseTree(root, next);
+      this.insert(root, next);
     }
 
     return root;
   }
 
-  insert(next: TNode) {
-    this.traverseTree(this.root, next);
+  add(next: TNode) {
+    this.insert(this.root, next);
   }
 
-  traverseTree(root: TNode, next: TNode) {
+  private insert(root: TNode, next: TNode) {
     if (root.value === next.value) {
       return;
     }
 
     if (next.value < root.value) {
       if (root.left !== null) {
-        this.traverseTree(root.left, next);
+        this.insert(root.left, next);
       } else {
         root.left = next;
       }
     } else {
       if (root.right !== null) {
-        this.traverseTree(root.right, next)
+        this.insert(root.right, next)
       } else {
         root.right = next;
       }
