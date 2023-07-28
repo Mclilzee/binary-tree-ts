@@ -1,10 +1,10 @@
+import BinaryTree from "./BinaryTree";
 import "./style.css";
-import buildTree from "./tree-builder";
 import TNode from "./TNode";
-import BinaryTree from "./tree-builder";
 
-const numbers = createRandomNumbers(100);
-const tree = new BinaryTree(numbers);
+const numbers = createRandomNumbers(10);
+const tree = new BinaryTree();
+tree.buildNewTree(numbers);
 
 function createRandomNumbers(amount: number): number[] {
   const numbers = [];
@@ -15,7 +15,7 @@ function createRandomNumbers(amount: number): number[] {
   return numbers;
 }
 
-function prettyPrint(node: TNode, prefix: string = "", isLeft = true) {
+function prettyPrint(node: TNode | null, prefix: string = "", isLeft = true) {
   if (node === null) {
     return;
   }

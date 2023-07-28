@@ -1,51 +1,56 @@
 import TNode from "./TNode";
 class BinaryTree {
-  readonly root: TNode;
+  root: TNode;
 
-  constructor(numbers: number[]) {
-    this.root = this.buildTree(numbers);
+  constructor(number?: number) {
+    if (number) {
+      this.root = new TNode(number);
+    } else {
+      this.root = new TNode(0);
+    }
   }
 
-  private buildTree(numbers: number[]): TNode {
+  buildNewTree(numbers: number[]) {
     if (numbers.length === 0) {
-      return new TNode(0);
+      this.root = new TNode(0);
+      return;
     }
 
     const root = new TNode(numbers[0]);
     for (let i = 1; i < numbers.length; i++) {
-      const next = new TNode(numbers[i]);
-      this.insert(root, next);
+      const node = new TNode(numbers[i]);
+      this.traverse(root, node);
     }
 
-    return root;
+    this.root = root;
   }
 
-  add(number: number) {
+  insert(number: number): BinaryTree {
     const node = new TNode(number);
-    this.insert(this.root, node);
+    this.traverse(this.root, node);
+
+    return this;
   }
 
-  private insert(root: TNode, node: TNode) {
-    if (root.value === node.value) {
-      return;
-    }
+  delete(number: number) {
+  }
 
-    if (node.value < root.value) {
+  private traverse(root: TNode, node: TNode) {
+    if (node.value < root!.value) {
       if (root.left !== null) {
-        this.insert(root.left, node);
+        this.traverse(root!.left, node);
       } else {
         root.left = node;
       }
-    } else {
+
+    } else if (node.value > root!.value) {
       if (root.right !== null) {
-        this.insert(root.right, node)
+        this.traverse(root!.right, node)
       } else {
         root.right = node;
       }
     }
   }
-
 }
-
 
 export default BinaryTree;

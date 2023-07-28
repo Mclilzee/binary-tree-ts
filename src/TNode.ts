@@ -8,10 +8,6 @@ class TNode {
     this.left = null;
     this.right = null;
   }
-
-  compareTo(other: TNode): number {
-    return this.value - other.value;
-  }
 }
 
 export default TNode;
