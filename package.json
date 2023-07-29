@@ -27,7 +27,13 @@
     "webpack-dev-server": "^4.15.1"
   },
   "jest": {
-    "verbose": true,
-    "preset": "ts-jest"
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "./src/test/tsconfig.json"
+        }
+      ]
+    }
   }
 }
