@@ -160,7 +160,6 @@ describe("Relink nodes correctly after deletion", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([20, 30, 60, 50, 25, 21, 26]);
     tree.remove(25);
-    console.log(tree.root);
     expect(tree.root.value).toBe(20);
     expect(tree.root.right.value).toBe(30);
     expect(tree.root.right.right.value).toBe(60);
