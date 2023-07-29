@@ -67,15 +67,25 @@ class BinaryTree {
     if (this.root.value === value) {
       this.root = null;
     } else if (value > this.root.value && this.root.right !== null) {
-      this.deleteNode(this.root, this.root.right, value);
+      this.deleteRightNode(this.root, this.root.right, value);
     } else if (value < this.root.value && this.root.left !== null) {
-      this.deleteNode(this.root, this.root.left, value);
+      this.deleteLeftNode(this.root, this.root.left, value);
     }
   }
 
-  private deleteNode(parent: TNode, node: TNode, value: number) {
+  private deleteRightNode(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
       parent.right = node.right;
+    } else if (value > node.value && node.right !== null) {
+      this.deleteRightNode(node, node.right, value);
+    }
+  }
+
+  private deleteLeftNode(parent: TNode, node: TNode, value: number) {
+    if (node.value === value) {
+      parent.left = node.right;
+    } else if (value < node.value && node.left !== null) {
+      this.deleteLeftNode(node, node.left, value);
     }
   }
 }
