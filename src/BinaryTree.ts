@@ -42,6 +42,18 @@ class BinaryTree {
     return this;
   }
 
+  find(value: number): TNode | null {
+    if (this.root === null) {
+      return null;
+    }
+
+    if (this.root.value === value) {
+      return this.root;
+    }
+
+    return null;
+  }
+
   private insert(root: TNode, node: TNode) {
     if (node.value < root.value) {
       if (root.left !== null) {
