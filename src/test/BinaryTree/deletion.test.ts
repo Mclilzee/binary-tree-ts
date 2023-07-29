@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import BinaryTree from '../../BinaryTree';
 
-describe("Deletes correct elements", () => {
+describe("Delete correct nodes", () => {
   test("Delete throws no error if root is null", () => {
     const tree = new BinaryTree();
     tree.remove(5);
@@ -79,6 +79,39 @@ describe("Deletes correct elements", () => {
     expect(tree.root!.left!.right!.right).toBeNull();
   })
 
+})
+
+describe("Relink nodes correctly after deletion", () => {
+  test("Relink root if it has right child", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 30]);
+    tree.remove(20);
+
+    expect(tree.root!.value).toBe(30);
+    expect(tree.root!.right).toBeNull();
+    expect(tree.root!.left).toBeNull();
+  })
+
+  test("Relink root if it has left and no right child", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10]);
+    tree.remove(20);
+
+    expect(tree.root!.value).toBe(10);
+    expect(tree.root!.right).toBeNull();
+    expect(tree.root!.left).toBeNull();
+  })
+
+  test("Relink root assign left to right node if both children exist", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 30, 25, 10, 15]);
+    tree.remove(20);
+    expect(tree.root!.value).toBe(30);
+    expect(tree.root!.left!.value).toBe(25);
+    expect(tree.root!.left!.left!.value).toBe(10);
+    expect(tree.root!.left!.left!.right!.value).toBe(15);
+  })
+
   test("Relink nested right link by default on the right side if exist", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([10, 20, 30]);
@@ -101,7 +134,7 @@ describe("Deletes correct elements", () => {
     expect(tree.root!.left!.left).toBeNull();
   })
 
-  test("Relink nested left link if right link doesn't exist on right side", () => {
+  test("Relink nested left link if right link doesn't exist on root's right side", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([10, 20, 15]);
     tree.remove(20);
@@ -112,7 +145,7 @@ describe("Deletes correct elements", () => {
     expect(tree.root!.right!.left).toBeNull();
   })
 
-  test("Relink nested left link if right link doesn't exist on left side", () => {
+  test("Relink nested left link if right link doesn't exist on root's left side", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([20, 10, 5]);
     tree.remove(10);
@@ -121,5 +154,52 @@ describe("Deletes correct elements", () => {
     expect(tree.root!.left!.value).toBe(5);
     expect(tree.root!.left!.right).toBeNull();
     expect(tree.root!.left!.left).toBeNull();
+  })
+
+  test("Relink nested link if node has both children starting from root's right side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 30, 60, 50, 25, 21, 26]);
+    tree.remove(25);
+    console.log(tree.root);
+    expect(tree.root!.value).toBe(20);
+    expect(tree.root!.right!.value).toBe(30);
+    expect(tree.root!.right!.right!.value).toBe(60);
+    expect(tree.root!.right!.left!.value).toBe(26);
+    expect(tree.root!.right!.left!.left!.value).toBe(21);
+  })
+
+  test("Relink nested links if node has both children starting from root's left side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10, 18, 19, 17, 16, 8, 9, 5]);
+    tree.remove(10);
+
+    expect(tree.root!.value).toBe(20);
+    expect(tree.root!.left!.value).toBe(18);
+    expect(tree.root!.left!.right!.value).toBe(19);
+    expect(tree.root!.left!.left!.value).toBe(17);
+    expect(tree.root!.left!.left!.left!.value).toBe(16);
+    expect(tree.root!.left!.left!.left!.left!.value).toBe(8);
+    expect(tree.root!.left!.left!.left!.left!.left!.value).toBe(5);
+    expect(tree.root!.left!.left!.left!.left!.right!.value).toBe(9);
+    expect(tree.root!.left!.left!.left!.left!.right!.left).toBeNull();
+    expect(tree.root!.left!.left!.left!.left!.right!.right).toBeNull();
+  })
+
+  test("Relink a complex tree after multiple removal", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([50, 70, 90, 100, 60, 65, 55, 80, 40, 45, 30, 15]);
+    tree.remove(60);
+    tree.remove(55);
+    tree.remove(90);
+    tree.remove(30);
+    tree.remove(50);
+
+    expect(tree.root!.value).toBe(70);
+    expect(tree.root!.right!.value).toBe(100);
+    expect(tree.root!.right!.left!.value).toBe(80);
+    expect(tree.root!.left!.value).toBe(65);
+    expect(tree.root!.left!.left!.value).toBe(40);
+    expect(tree.root!.left!.left!.right!.value).toBe(45);
+    expect(tree.root!.left!.left!.left!.value).toBe(15);
   })
 });

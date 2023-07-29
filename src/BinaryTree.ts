@@ -65,7 +65,15 @@ class BinaryTree {
     }
 
     if (this.root.value === value) {
-      this.root = null;
+      if (this.root.right === null) {
+        this.root = this.root.left;
+      } else if (this.root.left !== null) {
+        const leftNode = this.root.left;
+        this.root = this.root.right;
+        this.insert(this.root, leftNode);
+      } else {
+        this.root = this.root.right;
+      }
     } else if (value > this.root.value && this.root.right !== null) {
       this.deleteRightChild(this.root, this.root.right, value);
     } else if (this.root.left !== null) {
@@ -77,7 +85,10 @@ class BinaryTree {
 
   private deleteRightChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
-      if (node.right === null && node.left !== null) {
+      if (node.right !== null && node.left !== null) {
+        parent.right = node.right;
+        this.insert(node.right, node.left);
+      } else if (node.right === null && node.left !== null) {
         parent.right = node.left;
       } else {
         parent.right = node.right;
@@ -85,13 +96,16 @@ class BinaryTree {
     } else if (value > node.value && node.right !== null) {
       this.deleteRightChild(node, node.right, value);
     } else if (node.left !== null) {
-      this.deleteLeftChild(parent, node.left, value);
+      this.deleteLeftChild(node, node.left, value);
     }
   }
 
   private deleteLeftChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
-      if (node.right === null && node.left !== null) {
+      if (node.right !== null && node.left !== null) {
+        parent.left = node.right;
+        this.insert(parent.left, node.left);
+      } else if (node.right === null && node.left !== null) {
         parent.left = node.left;
       } else {
         parent.left = node.right;
