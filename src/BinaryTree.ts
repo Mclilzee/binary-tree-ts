@@ -59,9 +59,9 @@ class BinaryTree {
     }
   }
 
-  remove(value: number) {
+  remove(value: number): BinaryTree {
     if (this.root === null) {
-      return;
+      return this;
     }
 
     if (this.root.value === value) {
@@ -71,6 +71,8 @@ class BinaryTree {
     } else if (this.root.left !== null) {
       this.deleteLeftChild(this.root, this.root.left, value);
     }
+
+    return this;
   }
 
   private deleteRightChild(parent: TNode, node: TNode, value: number) {
