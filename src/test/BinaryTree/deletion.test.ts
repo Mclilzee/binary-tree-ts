@@ -78,4 +78,48 @@ describe("Deletes correct elements", () => {
     expect(tree.root!.left!.right!.value).toBe(7);
     expect(tree.root!.left!.right!.right).toBeNull();
   })
+
+  test("Relink nested right link by default on the right side if exist", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([10, 20, 30]);
+    tree.remove(20);
+
+    expect(tree.root!.value).toBe(10);
+    expect(tree.root!.right!.value).toBe(30);
+    expect(tree.root!.right!.right).toBeNull();
+    expect(tree.root!.right!.left).toBeNull();
+  })
+
+  test("Relink nested right link by default on the left side if exist", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10, 15]);
+    tree.remove(10);
+
+    expect(tree.root!.value).toBe(20);
+    expect(tree.root!.left!.value).toBe(15);
+    expect(tree.root!.left!.right).toBeNull();
+    expect(tree.root!.left!.left).toBeNull();
+  })
+
+  test("Relink nested left link if right link doesn't exist on right side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([10, 20, 15]);
+    tree.remove(20);
+
+    expect(tree.root!.value).toBe(10);
+    expect(tree.root!.right!.value).toBe(15);
+    expect(tree.root!.right!.right).toBeNull();
+    expect(tree.root!.right!.left).toBeNull();
+  })
+
+  test("Relink nested left link if right link doesn't exist on left side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10, 5]);
+    tree.remove(10);
+
+    expect(tree.root!.value).toBe(20);
+    expect(tree.root!.left!.value).toBe(5);
+    expect(tree.root!.left!.right).toBeNull();
+    expect(tree.root!.left!.left).toBeNull();
+  })
 });

@@ -77,7 +77,11 @@ class BinaryTree {
 
   private deleteRightChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
-      parent.right = node.right;
+      if (node.right === null && node.left !== null) {
+        parent.right = node.left;
+      } else {
+        parent.right = node.right;
+      }
     } else if (value > node.value && node.right !== null) {
       this.deleteRightChild(node, node.right, value);
     } else if (node.left !== null) {
@@ -87,7 +91,11 @@ class BinaryTree {
 
   private deleteLeftChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
-      parent.left = node.right;
+      if (node.right === null && node.left !== null) {
+        parent.left = node.left;
+      } else {
+        parent.left = node.right;
+      }
     } else if (value < node.value && node.left !== null) {
       this.deleteLeftChild(node, node.left, value);
     } else if (node.right !== null) {
