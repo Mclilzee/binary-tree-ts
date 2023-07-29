@@ -67,25 +67,29 @@ class BinaryTree {
     if (this.root.value === value) {
       this.root = null;
     } else if (value > this.root.value && this.root.right !== null) {
-      this.deleteRightNode(this.root, this.root.right, value);
-    } else if (value < this.root.value && this.root.left !== null) {
-      this.deleteLeftNode(this.root, this.root.left, value);
+      this.deleteRightChild(this.root, this.root.right, value);
+    } else if (this.root.left !== null) {
+      this.deleteLeftChild(this.root, this.root.left, value);
     }
   }
 
-  private deleteRightNode(parent: TNode, node: TNode, value: number) {
+  private deleteRightChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
       parent.right = node.right;
     } else if (value > node.value && node.right !== null) {
-      this.deleteRightNode(node, node.right, value);
+      this.deleteRightChild(node, node.right, value);
+    } else if (node.left !== null) {
+      this.deleteLeftChild(parent, node.left, value);
     }
   }
 
-  private deleteLeftNode(parent: TNode, node: TNode, value: number) {
+  private deleteLeftChild(parent: TNode, node: TNode, value: number) {
     if (node.value === value) {
       parent.left = node.right;
     } else if (value < node.value && node.left !== null) {
-      this.deleteLeftNode(node, node.left, value);
+      this.deleteLeftChild(node, node.left, value);
+    } else if (node.right !== null) {
+      this.deleteRightChild(node, node.right, value);
     }
   }
 }

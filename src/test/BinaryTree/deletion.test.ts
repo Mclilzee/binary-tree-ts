@@ -53,6 +53,7 @@ describe("Deletes correct elements", () => {
     tree.add(10);
     tree.add(13);
     tree.remove(13);
+    expect(tree.root!.value).toBe(5);
     expect(tree.root!.right!.value).toBe(7);
     expect(tree.root!.right!.right!.value).toBe(10);
     expect(tree.root!.right!.right!.right).toBeNull();
@@ -64,8 +65,30 @@ describe("Deletes correct elements", () => {
     tree.add(5);
     tree.add(2);
     tree.remove(2);
+    expect(tree.root!.value).toBe(20);
     expect(tree.root!.left!.value).toBe(10);
     expect(tree.root!.left!.left!.value).toBe(5);
     expect(tree.root!.left!.left!.left).toBeNull();
   })
+
+  test("Delete nested links branches in different directions", () => {
+    const tree = new BinaryTree(10);
+    tree.add(20);
+    tree.add(5);
+    tree.add(15);
+    tree.add(16);
+    tree.add(7);
+    tree.add(8);
+    tree.remove(16);
+    tree.remove(8);
+
+    expect(tree.root!.right!.value).toBe(20);
+    expect(tree.root!.right!.left!.value).toBe(15);
+    expect(tree.root!.right!.left!.right!).toBeNull();
+
+    expect(tree.root!.left!.value).toBe(5);
+    expect(tree.root!.left!.right!.value).toBe(7);
+    expect(tree.root!.left!.right!.right).toBeNull();
+  })
+
 });
