@@ -2,9 +2,9 @@ import BinaryTree from "./BinaryTree";
 import "./style.css";
 import prettyPrint from "./treePrinter";
 
-// const numbers = createRandomNumbers(10);
+const numbers = createRandomNumbers(10);
 const tree = new BinaryTree();
-tree.buildNewTree([5, 20, 10, 30, 56, 22, 0, -1, -63]);
+tree.buildNewTree(numbers);
 
 function createRandomNumbers(amount: number): number[] {
   const numbers = [];

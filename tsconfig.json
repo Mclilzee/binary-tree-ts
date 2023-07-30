@@ -7,12 +7,13 @@
     "outDir": "./dist", /* Specify an output folder for all emitted files. */
     "removeComments": true, /* Disable emitting comments. */
     "noEmitOnError": true, /* Disable emitting files if any type checking errors are reported. */
-    "allowSyntheticDefaultImports": true, /* Allow 'import x from y' when a module doesn't have a default export. */
     "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
     "strict": true, /* Enable all strict type-checking options. */
-    "noImplicitAny": true, /* Enable error reporting for expressions and declarations with an implied 'any' type. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "noFallthroughCasesInSwitch": true, // Compile error if switch cases doesn't end with break, return or throw
+    "noImplicitOverride": true, // Emit error when trying to overwrite super class method with no overwrite modifier
+    "noPropertyAccessFromIndexSignature": true, // Ensure we calling object properties with index or keys depend of which is available
   },
   "exclude": [
     "./src/test/"
