@@ -5,7 +5,6 @@ describe("Returns the correct Node object if exists", () => {
   test("Return null when no object found", () => {
     const tree = new BinaryTree();
     const node = tree.find(5);
-
     expect(node).toBeNull();
   })
 
