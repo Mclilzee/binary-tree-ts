@@ -1,10 +1,10 @@
 import BinaryTree from "./BinaryTree";
 import "./style.css";
-import TNode from "./TNode";
+import prettyPrint from "./treePrinter";
 
-const numbers = createRandomNumbers(10);
+// const numbers = createRandomNumbers(10);
 const tree = new BinaryTree();
-tree.buildNewTree(numbers);
+tree.buildNewTree([5, 20, 10, 30, 56, 22, 0, -1, -63]);
 
 function createRandomNumbers(amount: number): number[] {
   const numbers = [];
@@ -15,18 +15,4 @@ function createRandomNumbers(amount: number): number[] {
   return numbers;
 }
 
-function prettyPrint(node: TNode | null, prefix: string = "", isLeft = true) {
-  if (node === null) {
-    return;
-  }
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false)
-  }
-  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.value}`);
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
-  }
-};
-
 prettyPrint(tree.root);
-
