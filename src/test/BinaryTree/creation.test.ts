@@ -32,6 +32,17 @@ describe("Builds the tree correctly on initalization", () => {
     expect(tree.root.right).toBeNull();
   });
 
+  test("Overwrite old tree with new tree", () => {
+    tree.buildNewTree([5, 2, 1, 50, 7, 3, 2, 12,]);
+    const root = tree.root;
+
+    tree.buildNewTree([10, 20, 5]);
+    expect(tree.root).not.toBe(root);
+    expect(tree.root.value).toBe(10);
+    expect(tree.root.right.value).toBe(20);
+    expect(tree.root.left.value).toBe(5);
+  })
+
   test("New tree created with no root if empty array passed", () => {
     tree = new BinaryTree(5);
     tree.add(6).add(4);
