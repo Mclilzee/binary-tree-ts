@@ -26,13 +26,7 @@ class BinaryTree {
   }
 
   add(value: number | TNode): BinaryTree {
-    let node: TNode;
-
-    if (typeof value == "number") {
-      node = new TNode(value);
-    } else {
-      node = value;
-    }
+    let node: TNode = typeof value === "number" ? new TNode(value) : value;
 
     if (this.root === null) {
       this.root = node;
@@ -42,32 +36,6 @@ class BinaryTree {
     return this;
   }
 
-  find(value: number): TNode | null {
-    if (this.root === null || this.root.value === value) {
-      return this.root;
-    }
-
-    if (this.root.right !== null && value > this.root.value) {
-      return this.searchForNode(this.root.right, value);
-    } else if (this.root.left !== null) {
-      return this.searchForNode(this.root.left, value);
-    }
-
-    return null;
-  }
-
-  private searchForNode(node: TNode, value: number): TNode | null {
-    if (node.value === value) {
-      return node;
-    } else if (value > node.value && node.right !== null) {
-      return this.searchForNode(node.right, value);
-    } else if (value < node.value && node.left !== null) {
-      return this.searchForNode(node.left, value);
-    }
-
-    return null;
-  }
-
   private insert(root: TNode, node: TNode) {
     if (node.value < root.value) {
       if (root.left !== null) {
@@ -75,8 +43,7 @@ class BinaryTree {
       } else {
         root.left = node;
       }
-
-    } else if (node.value > root!.value) {
+    } else if (node.value > root.value) {
       if (root.right !== null) {
         this.insert(root!.right, node)
       } else {
@@ -141,6 +108,32 @@ class BinaryTree {
     } else if (node.right !== null) {
       this.deleteRightChild(node, node.right, value);
     }
+  }
+
+  find(value: number): TNode | null {
+    if (this.root === null || this.root.value === value) {
+      return this.root;
+    }
+
+    if (this.root.right !== null && value > this.root.value) {
+      return this.searchForNode(this.root.right, value);
+    } else if (this.root.left !== null) {
+      return this.searchForNode(this.root.left, value);
+    }
+
+    return null;
+  }
+
+  private searchForNode(node: TNode, value: number): TNode | null {
+    if (node.value === value) {
+      return node;
+    } else if (value > node.value && node.right !== null) {
+      return this.searchForNode(node.right, value);
+    } else if (value < node.value && node.left !== null) {
+      return this.searchForNode(node.left, value);
+    }
+
+    return null;
   }
 }
 
