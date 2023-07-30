@@ -43,12 +43,26 @@ class BinaryTree {
   }
 
   find(value: number): TNode | null {
-    if (this.root === null) {
-      return null;
+    if (this.root === null || this.root.value === value) {
+      return this.root;
     }
 
-    if (this.root.value === value) {
-      return this.root;
+    if (this.root.right !== null && value > this.root.value) {
+      return this.searchForNode(this.root.right, value);
+    } else if (this.root.left !== null) {
+      return this.searchForNode(this.root.left, value);
+    }
+
+    return null;
+  }
+
+  private searchForNode(node: TNode, value: number): TNode | null {
+    if (node.value === value) {
+      return node;
+    } else if (value > node.value && node.right !== null) {
+      return this.searchForNode(node.right, value);
+    } else if (value < node.value && node.left !== null) {
+      return this.searchForNode(node.left, value);
     }
 
     return null;
