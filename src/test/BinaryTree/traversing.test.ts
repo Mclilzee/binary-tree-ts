@@ -1,4 +1,5 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect, test, jest, beforeEach } from "@jest/globals";
+import TNode from "../../TNode";
 import BinaryTree from "../../BinaryTree";
 
 describe("Returns the correct Node object if exists", () => {
@@ -65,3 +66,64 @@ describe("Returns the correct Node object if exists", () => {
     expect(thirdNode.left).toBe(firstNode);
   })
 })
+
+describe("Tree to array return correct levelOrder aray", () => {
+  const tree = new BinaryTree();
+
+  test("Return empty array if tree is empty", () => {
+    const array = tree.toLevelOrderArray();
+    expect(array.length).toBe(0);
+  })
+
+  test("Return root array", () => {
+    tree.buildNewTree([6]);
+    const array = tree.toLevelOrderArray();
+
+    expect(array.length).toBe(1);
+    expect(array[0]).toBe(tree.root);
+  })
+
+  test("Return correct array including root right link", () => {
+    tree.buildNewTree([0, 5]);
+    const array = tree.toLevelOrderArray();
+
+    expect(array.length).toBe(2);
+    expect(array[0]).toBe(tree.root);
+    expect(array[1]).toBe(tree.root.right);
+  })
+
+  test("Return coect aay including root left link", () => {
+    tree.buildNewTree([10, 5])
+    const array = tree.toLevelOrderArray();
+
+    expect(array.length).toBe(2);
+    expect(array[0]).toBe(tree.root);
+    expect(array[1]).toBe(tree.root.left);
+  })
+
+  test("Return array containting both left and right link", () => {
+    tree.buildNewTree([10, 5, 20])
+    const array = tree.toLevelOrderArray();
+
+    expect(array.length).toBe(3);
+    expect(array[0]).toBe(tree.root);
+    expect(array[1]).toBe(tree.root.left);
+    expect(array[2]).toBe(tree.root.right);
+  })
+
+  test("Return correct level links, in complex tree", () => {
+    tree.buildNewTree([10, 5, 20, 15, 30, 8, 0, 22, -5]);
+    const array = tree.toLevelOrderArray();
+
+    expect(array.length).toBe(9);
+    expect(array[0]).toBe(tree.root);
+    expect(array[1]).toBe(tree.root.left);
+    expect(array[2]).toBe(tree.root.right);
+    expect(array[3]).toBe(tree.root.left.left);
+    expect(array[4]).toBe(tree.root.left.right);
+    expect(array[5]).toBe(tree.root.right.left);
+    expect(array[6]).toBe(tree.root.right.right);
+    expect(array[7]).toBe(tree.root.left.left.left);
+    expect(array[8]).toBe(tree.root.right.right.left);
+  })
+});

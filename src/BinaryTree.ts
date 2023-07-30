@@ -80,6 +80,30 @@ class BinaryTree {
 
     return null;
   }
+
+  toLevelOrderArray(): TNode[] {
+    let array: TNode[] = [];
+    const extract: TNode[] = [];
+    if (this.root !== null) {
+      array.push(this.root);
+    }
+
+    while (array.length > 0) {
+      const node = array[0];
+      array = array.splice(1);
+
+      extract.push(node);
+
+      if (node.left !== null) {
+        array.push(node.left);
+      }
+      if (node.right !== null) {
+        array.push(node.right);
+      }
+    }
+
+    return extract;
+  }
 }
 
 export default BinaryTree;
