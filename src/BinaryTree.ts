@@ -11,45 +11,28 @@ class BinaryTree {
   }
 
   buildNewTree(values: number[]) {
-    if (values.length === 0) {
-      this.root = null;
-      return;
-    }
-
-    const root = new TNode(values[0]);
-    for (let i = 1; i < values.length; i++) {
-      const node = new TNode(values[i]);
-      this.insert(root, node);
-    }
-
-    this.root = root;
+    this.root = null;
+    values.forEach(value => this.add(value));
   }
 
   add(value: number | TNode): BinaryTree {
     let node: TNode = typeof value === "number" ? new TNode(value) : value;
-
-    if (this.root === null) {
-      this.root = node;
-    } else {
-      this.insert(this.root, node);
-    }
+    this.root = this.insert(this.root, node);
     return this;
   }
 
-  private insert(root: TNode, node: TNode) {
-    if (node.value < root.value) {
-      if (root.left !== null) {
-        this.insert(root.left, node);
-      } else {
-        root.left = node;
-      }
-    } else if (node.value > root.value) {
-      if (root.right !== null) {
-        this.insert(root!.right, node)
-      } else {
-        root.right = node;
-      }
+  private insert(root: TNode | null, node: TNode): TNode {
+    if (root === null) {
+      return node;
     }
+
+    if (node.value < root.value) {
+      root.left = this.insert(root.left, node);
+    } else if (node.value > root.value) {
+      root.right = this.insert(root.right, node)
+    }
+
+    return root;
   }
 
   remove(value: number): BinaryTree {
