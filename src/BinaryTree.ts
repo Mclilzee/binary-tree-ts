@@ -36,61 +36,31 @@ class BinaryTree {
   }
 
   remove(value: number): BinaryTree {
-    if (this.root === null) {
-      return this;
-    }
-
-    if (this.root.value === value) {
-      if (this.root.right === null) {
-        this.root = this.root.left;
-      } else if (this.root.left !== null) {
-        const leftNode = this.root.left;
-        this.root = this.root.right;
-        this.insert(this.root, leftNode);
-      } else {
-        this.root = this.root.right;
-      }
-    } else if (value > this.root.value && this.root.right !== null) {
-      this.deleteRightChild(this.root, this.root.right, value);
-    } else if (this.root.left !== null) {
-      this.deleteLeftChild(this.root, this.root.left, value);
-    }
-
+    this.root = this.deleteChildNode(this.root, value);
     return this;
   }
 
-  private deleteRightChild(parent: TNode, node: TNode, value: number) {
-    if (node.value === value) {
-      if (node.right !== null && node.left !== null) {
-        parent.right = node.right;
-        this.insert(node.right, node.left);
-      } else if (node.right === null && node.left !== null) {
-        parent.right = node.left;
-      } else {
-        parent.right = node.right;
-      }
-    } else if (value > node.value && node.right !== null) {
-      this.deleteRightChild(node, node.right, value);
-    } else if (node.left !== null) {
-      this.deleteLeftChild(node, node.left, value);
+  private deleteChildNode(root: TNode | null, value: number): TNode | null {
+    if (root === null) {
+      return null;
     }
-  }
 
-  private deleteLeftChild(parent: TNode, node: TNode, value: number) {
-    if (node.value === value) {
-      if (node.right !== null && node.left !== null) {
-        parent.left = node.right;
-        this.insert(parent.left, node.left);
-      } else if (node.right === null && node.left !== null) {
-        parent.left = node.left;
+    if (root.value === value) {
+      if (root.right === null) {
+        return root.left;
+      } else if (root.left !== null) {
+        this.insert(root.right, root.left);
+        return root.right;
       } else {
-        parent.left = node.right;
+        return root.right;
       }
-    } else if (value < node.value && node.left !== null) {
-      this.deleteLeftChild(node, node.left, value);
-    } else if (node.right !== null) {
-      this.deleteRightChild(node, node.right, value);
+    } else if (value > root.value) {
+      root.right = this.deleteChildNode(root.right, value);
+    } else if (root.left !== null) {
+      root.left = this.deleteChildNode(root.left, value);
     }
+
+    return root;
   }
 
   find(value: number): TNode | null {
