@@ -21,6 +21,13 @@ body {
   margin: 0;
 }
 
+.value {
+  margin: auto;
+  width: 50px;
+  font-size: 2rem;
+  text-align: center;
+}
+
 img {
   max-width: 100%;
 }
