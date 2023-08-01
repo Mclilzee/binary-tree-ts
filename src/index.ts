@@ -8,7 +8,7 @@ tree.buildNewTree(getRandomNumbers());
 
 function getRandomNumbers(): number[] {
   const numbers: number[] = []
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
     numbers.push(Math.floor(Math.random() * 100));
   }
 
