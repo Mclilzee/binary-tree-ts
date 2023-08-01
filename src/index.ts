@@ -1,18 +1,18 @@
 import BinaryTree from "./BinaryTree";
+import renderTree from "./renderTree";
 import "./style.css";
-import prettyPrint from "./treePrinter";
 
-const numbers = createRandomNumbers(10);
+
 const tree = new BinaryTree();
-tree.buildNewTree(numbers);
+tree.buildNewTree(getRandomNumbers());
 
-function createRandomNumbers(amount: number): number[] {
-  const numbers = [];
-  for (let i = 0; i < amount; i++) {
+function getRandomNumbers(): number[] {
+  const numbers: number[] = []
+  for (let i = 0; i < 20; i++) {
     numbers.push(Math.floor(Math.random() * 100));
   }
 
   return numbers;
 }
 
-prettyPrint(tree.root);
+renderTree(tree);
