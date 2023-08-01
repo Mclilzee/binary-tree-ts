@@ -27,26 +27,17 @@ html, body {
 }
 
 .node {
+  position: absolute;
   margin: 1vw;
-}
-
-.left-link > .node {
-  position: absolute;
-  right: 5%;
-}
-
-.right-link > .node {
-  position: absolute;
-  left: 5%;
 }
 
 .value {
   width: 3vw;
   height: 3vw;
+  padding-top: 27%;
   font-size: 1vw;
   text-align: center;
   font-weight: bold;
-  line-height:2rem;
   background-image: url("../public/node.svg");
   background-position: center;
   background-size: 100%;
@@ -54,10 +45,30 @@ html, body {
 
 .left-link {
   position: absolute;
-  left: 25%;
+  right: 3vw;
+  width: 20px;
+  height: 20px;
+  background-image: url("../public/left-arrow.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .right-link {
   position: absolute;
-  right: 25%;
+  left: 100%;
+  width: 20px;
+  height: 20px;
+  background-image: url("../public/right-arrow.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.left-link > .node {
+  position: absolute;
+  right: 1vw;
+}
+
+.right-link > .node {
+  position: absolute;
+  left: 1vw;
 }

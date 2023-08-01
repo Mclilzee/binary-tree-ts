@@ -1,7 +1,7 @@
 <svg width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_5_17)">
-<circle cx="15" cy="15" r="10" fill="#F8F8F8"/>
-<circle cx="15" cy="15" r="9.5" stroke="black"/>
+<circle cx="15" cy="14" r="10" fill="#F8F8F8"/>
+<circle cx="15" cy="14" r="9.5" stroke="black"/>
 <text cx="10" cy="10">Hello</text>
 </g>
 <defs>
