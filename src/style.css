@@ -18,13 +18,16 @@ html, body {
 .binary-tree-container {
   position: relative;
   height: 100vh;
-  width: 100vw;
   padding: 5px 30px;
-  margin: 0;
+}
+
+.binary-tree-container > .node {
+  position: absolute;
+  left: 50%;
 }
 
 .node {
-  margin: 5vw;
+  margin: 1vw;
 }
 
 .left-link > .node {
@@ -38,14 +41,12 @@ html, body {
 }
 
 .value {
-  position: absolute;
-  left: 50%;
-  padding-top: 10px;
   width: 3vw;
   height: 3vw;
   font-size: 1vw;
   text-align: center;
   font-weight: bold;
+  line-height:2rem;
   background-image: url("../public/node.svg");
   background-position: center;
   background-size: 100%;
@@ -53,12 +54,10 @@ html, body {
 
 .left-link {
   position: absolute;
-  right: 25%;
-  top: 10%;
+  left: 25%;
 }
 
 .right-link {
   position: absolute;
-  left: 25%;
-  top: 10%;
+  right: 25%;
 }
