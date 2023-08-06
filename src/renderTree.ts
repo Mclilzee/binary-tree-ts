@@ -1,5 +1,6 @@
 import BinaryTree from "./BinaryTree";
 import TNode from "./TNode";
+import { getNodeDepth } from "./binaryTreeUtils";
 
 const binaryTreeContainer = document.querySelector(".binary-tree-container") as HTMLDivElement;
 
@@ -18,6 +19,8 @@ function renderTree(tree: BinaryTree) {
 
 
 function drawElemenets(container: HTMLDivElement, node: TNode) {
+  const depth = getNodeDepth(node);
+  console.log(depth);
   const nodeDiv = document.createElement("div");
   nodeDiv.classList.add("node");
 

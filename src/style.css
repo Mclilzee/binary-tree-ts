@@ -21,6 +21,7 @@ html, body {
   padding: 5px 30px;
 }
 
+/* root */
 .binary-tree-container > .node {
   position: absolute;
   left: 50%;
