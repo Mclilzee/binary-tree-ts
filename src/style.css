@@ -15,41 +15,37 @@ html, body {
   padding: 20px;
 }
 
-.binary-tree-container {
-  display: flex;
+.binary-tree-container,
+.left-link,
+.right-link {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px;
   justify-content: center;
-  align-items: center;
-  padding: 5px 5px;
-}
-
-.binary-tree-container > .node {
-  position: relative;
-}
-
-.node {
-  border: solid 1px black;
-  position: absolute;
 }
 
 .value {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   width: 3vw;
   height: 3vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1vw;
   font-weight: bold;
   background-image: url("../public/node.svg");
-  background-position: center;
+  background-repeat: no-repeat;
   background-size: 100%;
 }
 
 .left-link {
-  position: absolute;
-  right: 1px;
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .right-link {
-  position: absolute;
-  left: 1px;
+  grid-column: 3;
+  grid-row: 2;
 }
