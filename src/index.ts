@@ -4,12 +4,19 @@ import "./style.css";
 
 
 const tree = new BinaryTree();
-tree.buildNewTree(getRandomNumbers());
+const numbers = getRandomNumbers();
+tree.buildNewTree(numbers);
+console.log(numbers);
 
 function getRandomNumbers(): number[] {
   const numbers: number[] = []
-  for (let i = 0; i < 50; i++) {
-    numbers.push(Math.floor(Math.random() * 100));
+  for (let i = 0; i < 1000; i++) {
+    const number = Math.floor(Math.random() * 20);
+    if (numbers.includes(number)) {
+      continue;
+    }
+
+    numbers.push(number);
   }
 
   return numbers;

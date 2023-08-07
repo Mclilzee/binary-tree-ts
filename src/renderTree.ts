@@ -19,20 +19,14 @@ function renderTree(tree: BinaryTree) {
 
 
 function drawElemenets(container: HTMLDivElement, node: TNode) {
-  const depth = getNodeDepth(node);
-  const nodeDiv = document.createElement("div");
-  nodeDiv.classList.add("node");
-
   const value = document.createElement("div");
   value.classList.add("value");
   value.textContent = node.value.toString();
-
-  nodeDiv.appendChild(value);
+  container.appendChild(value);
 
   if (node.left !== null) {
     const leftLink = document.createElement("div");
     leftLink.classList.add("left-link");
-    leftLink.style.right = 200 * depth + "px";
     drawElemenets(leftLink, node.left);
     container.appendChild(leftLink);
   }
@@ -40,7 +34,6 @@ function drawElemenets(container: HTMLDivElement, node: TNode) {
   if (node.right !== null) {
     const rightLink = document.createElement("div");
     rightLink.classList.add("right-link");
-    rightLink.style.left = 200 * depth + "px";
     drawElemenets(rightLink, node.right);
     container.appendChild(rightLink);
   }
