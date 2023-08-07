@@ -104,6 +104,22 @@ class BinaryTree {
 
     return extract;
   }
+
+  getDepth(): number {
+    if (this.root === null) {
+      return 0;
+    }
+
+    return this.getNodeDepth(this.root);
+  }
+
+
+  getNodeDepth(node: TNode): number {
+    const leftDepth = node.left !== null ? 1 + this.getNodeDepth(node.left) : 0;
+    const rightDepth = node.right !== null ? 1 + this.getNodeDepth(node.right) : 0;
+
+    return Math.max(leftDepth, rightDepth);
+  }
 }
 
 export default BinaryTree;
