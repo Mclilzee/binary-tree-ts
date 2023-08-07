@@ -1,6 +1,5 @@
 import BinaryTree from "./BinaryTree";
 import TNode from "./TNode";
-import { getNodeDepth } from "./binaryTreeUtils";
 
 const binaryTreeContainer = document.querySelector(".binary-tree-container") as HTMLDivElement;
 
