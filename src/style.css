@@ -53,3 +53,11 @@ html, body {
   grid-column: 3;
   grid-row: 2;
 }
+
+.line {
+  padding:0px;
+  margin:0px;
+  height: 2px;
+  background-color: black;
+  line-height:1px; 
+}
