@@ -1,11 +1,10 @@
-<svg width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="40" height="40" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_5_17)">
-<circle cx="15" cy="14" r="10" fill="#F8F8F8"/>
-<circle cx="15" cy="14" r="9.5" stroke="black"/>
-<text cx="10" cy="10">Hello</text>
+<circle cx="10" cy="10" r="10" fill="#F8F8F8"/>
+<circle cx="10" cy="10" r="9.5" stroke="black"/>
 </g>
 <defs>
-<filter id="filter0_d_5_17" x="0" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_5_17" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feOffset dy="4"/>
 <feGaussianBlur stdDeviation="2"/>
