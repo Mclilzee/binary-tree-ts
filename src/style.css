@@ -24,11 +24,12 @@ html, body {
 .left-link,
 .right-link {
   display: grid;
-  grid-template-columns: 1fr 2vw 1fr;
-  grid-template-rows: 2vw 1fr;
+  grid-template-columns: 1fr 30px 1fr;
+  grid-template-rows: 30px 1fr;
 }
 
 .value {
+  padding: 0;
   justify-self: center;
   grid-column:  2;
   grid-row: 1;
@@ -37,7 +38,6 @@ html, body {
   height: 100%;
   justify-content: center;
   align-items: center;
-  font-size: 0.8vw;
   font-weight: bold;
   background-image: url("../public/node.svg");
   background-repeat: no-repeat;
@@ -57,7 +57,6 @@ html, body {
 .line {
   padding:0px;
   margin:0px;
-  height: 2px;
   background-color: black;
-  line-height:1px; 
+  line-height:1px;
 }
