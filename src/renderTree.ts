@@ -42,20 +42,31 @@ function drawElemenets(container: HTMLDivElement, node: TNode) {
 function drawLines() {
   const values = document.querySelectorAll(".value");
   values.forEach(value => {
-    let nextSibling = value.nextElementSibling;
+    let sibling = value.nextElementSibling;
+    while (sibling !== null) {
+      const siblingValue = getValueElement(sibling as HTMLDivElement);
+      sibling = sibling.nextElementSibling;
 
-    if (nextSibling !== null) {
-      const siblingValue = nextSibling.firstElementChild as HTMLDivElement;
-      drawLine(value as HTMLDivElement, siblingValue);
-      nextSibling = nextSibling.nextElementSibling;
-    }
-
-    if (nextSibling !== null) {
-      const siblingValue = nextSibling.firstElementChild as HTMLDivElement;
-      drawLine(value as HTMLDivElement, siblingValue);
-      nextSibling = nextSibling.nextElementSibling;
+      if (siblingValue === null) {
+        continue;
+      }
+      drawLine(value as HTMLDivElement, siblingValue as HTMLDivElement);
     }
   });
+}
+
+function getValueElement(container: HTMLDivElement): HTMLDivElement | null {
+  let child = container.firstElementChild;
+
+  while (child !== null) {
+    if (child.classList.contains("value")) {
+      return child as HTMLDivElement;
+    }
+
+    child = child.nextElementSibling;
+  }
+
+  return null;
 }
 
 function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
@@ -63,11 +74,10 @@ function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
   const line = document.createElement("div");
   line.classList.add("line");
 
-  const e1 = getOffset(end);
-  const e2 = getOffset(start);
+  const e1 = getOffset(start);
+  const e2 = getOffset(end);
   const width = (start.clientWidth + end.clientWidth) / 2;
 
-  // distance
   const length = Math.sqrt(((e2.x - e1.x) * (e2.x - e1.x)) + ((e2.y - e1.y) * (e2.y - e1.y))) - width;
   // center
   const cx = ((e1.x + e2.x) / 2) - (length / 2);
