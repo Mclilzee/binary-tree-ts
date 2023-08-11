@@ -63,15 +63,17 @@ function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
   const line = document.createElement("div");
   line.classList.add("line");
 
-  const e1 = getOffset(start);
-  const e2 = getOffset(end);
-  const length = Math.sqrt(((e2.x - e1.x) * (e2.x - e1.x)) + ((e2.y - e1.y) * (e2.y - e1.y)));
+  const e1 = getOffset(end);
+  const e2 = getOffset(start);
+  const width = (start.clientWidth + end.clientWidth) / 2;
 
+  // distance
+  const length = Math.sqrt(((e2.x - e1.x) * (e2.x - e1.x)) + ((e2.y - e1.y) * (e2.y - e1.y))) - width;
+  // center
   const cx = ((e1.x + e2.x) / 2) - (length / 2);
   const cy = ((e1.y + e2.y) / 2) - (thickness / 2);
   // angle
   const angle = Math.atan2((e1.y - e2.y), (e1.x - e2.x)) * (180 / Math.PI);
-  // make hr
 
   line.style.position = "absolute";
   line.style.left = cx + "px";
@@ -87,8 +89,9 @@ function getOffset(element: HTMLDivElement) {
   const rect = element.getBoundingClientRect();
 
   return {
-    x: rect.left + rect.width,
-    y: rect.top + rect.height
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2,
   }
 }
+
 export default renderTree;
