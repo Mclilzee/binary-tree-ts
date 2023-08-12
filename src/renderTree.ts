@@ -1,7 +1,15 @@
 import BinaryTree from "./BinaryTree";
+import Line from "./Line";
 import TNode from "./TNode";
+import { binaryTreeContainer } from "./domElements";
 
-const binaryTreeContainer = document.querySelector(".binary-tree-container") as HTMLDivElement;
+interface LineCords {
+  cx: number,
+  cy: number,
+  length: number,
+  thickness: number,
+  angle: number
+}
 
 function renderTree(tree: BinaryTree) {
   const firstNode = document.querySelector(".binary-tree-container > .node");
@@ -22,6 +30,7 @@ function drawElemenets(container: HTMLDivElement, node: TNode) {
   const value = document.createElement("div");
   value.classList.add("value");
   value.textContent = node.value.toString();
+  value.dataset['value'] = node.value.toString();
   container.appendChild(value);
 
   if (node.left !== null) {
@@ -50,6 +59,7 @@ function drawLines() {
       if (siblingValue === null) {
         continue;
       }
+
       drawLine(value as HTMLDivElement, siblingValue as HTMLDivElement);
     }
   });
@@ -70,38 +80,16 @@ function getValueElement(container: HTMLDivElement): HTMLDivElement | null {
 }
 
 function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
-  const thickness = 2;
+  const lineCords = new Line(start, end, 2);
   const line = document.createElement("div");
   line.classList.add("line");
-
-  const e1 = getOffset(start);
-  const e2 = getOffset(end);
-  const width = (start.clientWidth + end.clientWidth) / 2;
-
-  const length = Math.sqrt(((e2.x - e1.x) * (e2.x - e1.x)) + ((e2.y - e1.y) * (e2.y - e1.y))) - width;
-  // center
-  const cx = ((e1.x + e2.x) / 2) - (length / 2);
-  const cy = ((e1.y + e2.y) / 2) - (thickness / 2);
-  // angle
-  const angle = Math.atan2((e1.y - e2.y), (e1.x - e2.x)) * (180 / Math.PI);
-
-  line.style.position = "absolute";
-  line.style.left = cx + "px";
-  line.style.top = cy + "px";
-  line.style.width = length + "px";
-  line.style.height = thickness + "px";
-  line.style.rotate = angle + "deg";
+  line.style.left = lineCords.x + "px";
+  line.style.top = lineCords.y + "px";
+  line.style.width = lineCords.length + "px";
+  line.style.height = lineCords.thickness + "px";
+  line.style.rotate = lineCords.angle + "deg";
 
   binaryTreeContainer.appendChild(line);
-}
-
-function getOffset(element: HTMLDivElement) {
-  const rect = element.getBoundingClientRect();
-
-  return {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-  }
 }
 
 export default renderTree;
