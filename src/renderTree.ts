@@ -3,14 +3,6 @@ import Line from "./Line";
 import TNode from "./TNode";
 import { binaryTreeContainer } from "./domElements";
 
-interface LineCords {
-  cx: number,
-  cy: number,
-  length: number,
-  thickness: number,
-  angle: number
-}
-
 function renderTree(tree: BinaryTree) {
   const firstNode = document.querySelector(".binary-tree-container > .node");
   if (firstNode !== null) {
@@ -24,7 +16,6 @@ function renderTree(tree: BinaryTree) {
   drawElemenets(binaryTreeContainer, tree.root);
   drawLines();
 }
-
 
 function drawElemenets(container: HTMLDivElement, node: TNode) {
   const value = document.createElement("div");
