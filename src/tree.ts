@@ -2,7 +2,6 @@ import BinaryTree from "./BinaryTree";
 
 const tree = new BinaryTree();
 const numbers = getRandomNumbers();
-console.log(numbers);
 tree.buildNewTree(numbers);
 
 function getRandomNumbers(): number[] {
