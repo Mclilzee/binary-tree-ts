@@ -2,6 +2,7 @@ import { binaryTreeContainer } from "./domElements";
 
 function attachBinaryTreeOnClickListener() {
   binaryTreeContainer.addEventListener("click", (e) => {
+    clearOutSelected();
     const element = e.target as HTMLDivElement;
     if (element === null || !element.classList.contains("value")) {
       return;
@@ -12,7 +13,6 @@ function attachBinaryTreeOnClickListener() {
       return;
     }
 
-    clearOutSelected();
     markLinesAsSelected(value);
     element.classList.add("selected");
   })
@@ -24,12 +24,10 @@ function clearOutSelected() {
 }
 
 function markLinesAsSelected(value: string) {
-  const lines = document.querySelectorAll(".line");
+  const lines = document.querySelectorAll(`.linked-to-${value}`);
   lines.forEach(element => {
     const elementDiv = element as HTMLDivElement;
-    if (elementDiv.dataset["linked-to"]?.includes(value)) {
-      elementDiv.classList.add("selected");
-    }
+    elementDiv.classList.add("selected");
   })
 }
 

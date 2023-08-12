@@ -73,7 +73,13 @@ function getValueElement(container: HTMLDivElement): HTMLDivElement | null {
 function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
   const lineCords = new Line(start, end, 2);
   const line = document.createElement("div");
+
+  const startLinkClass = start.dataset["value"] ? `linked-to-${start.dataset["value"]}` : "";
+  const endLinkClass = end.dataset["value"] ? `linked-to-${end.dataset["value"]}` : "";
+
   line.classList.add("line");
+  line.classList.add(startLinkClass);
+  line.classList.add(endLinkClass);
   line.style.left = lineCords.x + "px";
   line.style.top = lineCords.y + "px";
   line.style.width = lineCords.length + "px";
