@@ -1,7 +1,7 @@
 import { attachEventListeners } from "./dom/eventHandling";
 import renderTree from "./dom/renderTree";
 import "./style.css";
-import binaryTree from "./tree";
+import tree from "./tree";
 
-renderTree(binaryTree);
+renderTree(tree);
 attachEventListeners();

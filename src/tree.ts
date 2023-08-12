@@ -1,9 +1,9 @@
 import BinaryTree from "./BinaryTree";
 
-const binaryTree = new BinaryTree();
+const tree = new BinaryTree();
 const numbers = getRandomNumbers();
 console.log(numbers);
-binaryTree.buildNewTree(numbers);
+tree.buildNewTree(numbers);
 
 function getRandomNumbers(): number[] {
   const numbers: number[] = []
@@ -15,4 +15,4 @@ function getRandomNumbers(): number[] {
   return numbers;
 }
 
-export default binaryTree;
+export default tree;
