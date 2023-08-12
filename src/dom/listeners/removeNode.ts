@@ -1,4 +1,6 @@
 import { removeButton } from "../domElements";
+import tree from "../../tree";
+import renderTree from "../renderTree";
 
 function removeNodeListener() {
   removeButton.addEventListener("click", () => {
@@ -13,5 +15,9 @@ function removeNodeListener() {
     }
 
     const number = parseInt(value);
+    tree.remove(number);
+    renderTree(tree);
   })
 }
+
+export default removeNodeListener;
