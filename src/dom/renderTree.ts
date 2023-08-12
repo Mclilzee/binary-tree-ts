@@ -1,6 +1,6 @@
-import BinaryTree from "./BinaryTree";
-import Line from "./Line";
-import TNode from "./TNode";
+import BinaryTree from "../BinaryTree";
+import LineCord from "../LineCord";
+import TNode from "../TNode";
 import { binaryTreeContainer } from "./domElements";
 
 function renderTree(tree: BinaryTree) {
@@ -71,7 +71,7 @@ function getValueElement(container: HTMLDivElement): HTMLDivElement | null {
 }
 
 function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
-  const lineCords = new Line(start, end, 2);
+  const lineCords = new LineCord(start, end, 2);
   const line = document.createElement("div");
 
   const startLinkClass = start.dataset["value"] ? `linked-to-${start.dataset["value"]}` : "";

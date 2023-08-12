@@ -1,6 +1,6 @@
 import BinaryTree from "./BinaryTree";
-import { attachEventListeners } from "./eventHandling";
-import renderTree from "./renderTree";
+import { attachEventListeners } from "./dom/eventHandling";
+import renderTree from "./dom/renderTree";
 import "./style.css";
 
 

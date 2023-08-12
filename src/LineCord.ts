@@ -1,4 +1,4 @@
-class Line {
+class LineCord {
   readonly length: number;
   readonly x: number;
   readonly y: number;
@@ -27,4 +27,4 @@ class Line {
   }
 }
 
-export default Line;
+export default LineCord;
