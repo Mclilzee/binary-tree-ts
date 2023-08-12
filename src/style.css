@@ -13,6 +13,9 @@ html, body {
 
 .controls {
   display: grid;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 0px black;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -20,7 +23,11 @@ html, body {
   width: 80%;
   left: 10%;
   background-color: white;
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+.controls > .title {
+  margin: 0;
 }
 
 .binary-tree-container,
