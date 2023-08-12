@@ -1,6 +1,6 @@
 import { binaryTreeContainer } from "../domElements";
 
-function selectNodeListener() {
+function selectValueListener() {
   binaryTreeContainer.addEventListener("click", (e) => {
     clearOutSelected();
     const element = e.target as HTMLDivElement;
@@ -31,4 +31,4 @@ function markLinesAsSelected(value: string) {
   })
 }
 
-export default selectNodeListener;
+export default selectValueListener;

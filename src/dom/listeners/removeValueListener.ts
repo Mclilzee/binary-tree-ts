@@ -2,7 +2,7 @@ import { removeButton } from "../domElements";
 import tree from "../../tree";
 import renderTree from "../renderTree";
 
-function removeNodeListener() {
+function removeValueListener() {
   removeButton.addEventListener("click", () => {
     const selected = document.querySelector(".value.selected") as HTMLDivElement;
     if (selected === null) {
@@ -20,4 +20,4 @@ function removeNodeListener() {
   })
 }
 
-export default removeNodeListener;
+export default removeValueListener;

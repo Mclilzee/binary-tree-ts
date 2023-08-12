@@ -1,9 +1,9 @@
-import addValueListner from "./listeners/addValue";
-import removeNodeListener from "./listeners/removeNode";
-import selectNodeListener from "./listeners/selectNodeListener";
+import addValueListner from "./listeners/addValueListener";
+import removeValueListener from "./listeners/removeValueListener";
+import selectValueListener from "./listeners/selectValueListener";
 function attachEventListeners() {
-  selectNodeListener();
-  removeNodeListener();
+  selectValueListener();
+  removeValueListener();
   addValueListner();
 }
 
