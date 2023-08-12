@@ -1,5 +1,5 @@
 import BinaryTree from "./BinaryTree";
-import { attachBinaryTreeOnClickListener } from "./eventHandling";
+import { attachEventListeners } from "./eventHandling";
 import renderTree from "./renderTree";
 import "./style.css";
 
@@ -20,4 +20,4 @@ function getRandomNumbers(): number[] {
 }
 
 renderTree(tree);
-attachBinaryTreeOnClickListener();
+attachEventListeners();

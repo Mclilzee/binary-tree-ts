@@ -1,6 +1,6 @@
 import { binaryTreeContainer } from "./domElements";
 
-function attachBinaryTreeOnClickListener() {
+function attachEventListeners() {
   binaryTreeContainer.addEventListener("click", (e) => {
     clearOutSelected();
     const element = e.target as HTMLDivElement;
@@ -31,4 +31,4 @@ function markLinesAsSelected(value: string) {
   })
 }
 
-export { attachBinaryTreeOnClickListener };
+export { attachEventListeners };
