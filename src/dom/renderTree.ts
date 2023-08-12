@@ -4,17 +4,19 @@ import TNode from "../TNode";
 import { binaryTreeContainer } from "./domElements";
 
 function renderTree(tree: BinaryTree) {
-  const firstNode = document.querySelector(".binary-tree-container > .node");
-  if (firstNode !== null) {
-    binaryTreeContainer.removeChild(firstNode);
-  }
-
+  clearUpBinaryDom();
   if (tree.root === null) {
     return;
   }
 
   drawElemenets(binaryTreeContainer, tree.root);
   drawLines();
+}
+
+function clearUpBinaryDom() {
+  while (binaryTreeContainer.firstChild !== null) {
+    binaryTreeContainer.removeChild(binaryTreeContainer.firstChild);
+  }
 }
 
 function drawElemenets(container: HTMLDivElement, node: TNode) {
