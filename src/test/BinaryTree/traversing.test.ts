@@ -169,3 +169,42 @@ describe("Tree to array return correct levelOrder aray", () => {
     })
   })
 });
+
+describe("Check if tree is balance", () => {
+  test("Tree with null root is balance", () => {
+    const tree = new BinaryTree();
+    expect(tree.isBalanced()).toBe(true);
+  });
+
+  test("Tree is balanced if only has root", () => {
+    const tree = new BinaryTree(5);
+    expect(tree.isBalanced()).toBe(true);
+  });
+
+  test("Tree is balanced if right link is one level deep", () => {
+    const tree = new BinaryTree(5);
+    tree.add(6);
+    expect(tree.isBalanced()).toBe(true);
+  })
+
+  test("Tree is balanced if left link is one level deep", () => {
+    const tree = new BinaryTree(6);
+    tree.add(2);
+    expect(tree.isBalanced()).toBe(true);
+  })
+
+  test("Tree is balanced if height difference is less than or equals to 1", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 25, 10, 15, 5]);
+    expect(tree.isBalanced()).toBe(true);
+
+    tree.buildNewTree([20, 10, 5, 15, 25, 30]);
+    expect(tree.isBalanced()).toBe(true);
+  })
+
+  test("Tree is unbalanced if height difference is more than 1", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 25, 10, 15, 12, 5]);
+    expect(tree.isBalanced()).toBe(false);
+  })
+})
