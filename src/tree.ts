@@ -1,17 +1,6 @@
 import BinaryTree from "./BinaryTree";
 
 const tree = new BinaryTree();
-const numbers = getRandomNumbers();
-tree.buildNewTree(numbers);
-
-function getRandomNumbers(): number[] {
-  const numbers: number[] = []
-  for (let i = 0; i < 100; i++) {
-    const number = Math.floor(Math.random() * 100);
-    numbers.push(number);
-  }
-
-  return numbers;
-}
+tree.buildNewTree([100, 200, 300, 400, 500, 450, 600, 50, 60, 70, 80, 90, 65, 64, 40, 30, 20, 25]);
 
 export default tree;
