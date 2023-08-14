@@ -121,9 +121,12 @@ class BinaryTree {
       return true;
     }
 
-    if (this.isBalanced(node.left) && this.isBalanced(node.right)) {
-      const heightDifference = this.getDepth(node.left) - this.getDepth(node.right);
-      return Math.abs(heightDifference) <= 1;
+    const leftDepth = node.left === null ? -1 : this.getDepth(node.left);
+    const rightDepth = node.right === null ? -1 : this.getDepth(node.right);
+    const heightDifference = Math.abs(leftDepth - rightDepth);
+
+    if (heightDifference <= 1) {
+      return this.isBalanced(node.left) && this.isBalanced(node.right)
     }
 
     return false;
