@@ -202,9 +202,24 @@ describe("Check if tree is balance", () => {
     expect(tree.isBalanced()).toBe(true);
   })
 
-  test("Tree is unbalanced if height difference is more than 1", () => {
+  test("Tree is unbalanced if absolute height difference is more than 1", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([20, 25, 10, 15, 12, 5]);
     expect(tree.isBalanced()).toBe(false);
+
+    tree.buildNewTree([100, 50, 60, 40, 200, 300, 400, 350]);
+    expect(tree.isBalanced()).toBe(false);
+  })
+
+  test("Tree is unbalanced if children is unbalanced", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([100, 50, 40, 60, 70, 80, 65, 64, 200, 300, 400, 500, 450, 600]);
+    expect(tree.isBalanced()).toBe(false);
+  })
+
+  test("Tree balanced for complex tree structure", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([100, 200, 300, 400, 500, 450, 600, 50, 60, 70, 80, 90, 65, 64, 40, 30, 20, 25]);
+    expect(tree.isBalanced()).toBe(true);
   })
 })
