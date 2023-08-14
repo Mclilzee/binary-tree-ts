@@ -109,6 +109,7 @@ class BinaryTree {
     if (node === null) {
       return 0;
     }
+
     const leftDepth = node.left !== null ? 1 + this.getDepth(node.left) : 0;
     const rightDepth = node.right !== null ? 1 + this.getDepth(node.right) : 0;
 
