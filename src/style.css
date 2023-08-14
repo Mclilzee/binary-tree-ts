@@ -36,6 +36,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 30px 1fr;
   grid-template-rows: 30px 1fr;
+  height: 100%;
 }
 
 .value {
