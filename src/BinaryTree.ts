@@ -118,6 +118,14 @@ class BinaryTree {
 
     return Math.max(leftDepth, rightDepth);
   }
+
+  isBalanced() {
+    if (this.root === null) {
+      return true;
+    }
+
+    return this.getDepth(this.root.left) - this.getDepth(this.root.right) <= 1;
+  }
 }
 
 export default BinaryTree;
