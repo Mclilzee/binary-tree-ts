@@ -105,11 +105,7 @@ class BinaryTree {
     return extract;
   }
 
-  getDepth(node?: TNode | null): number {
-    if (node === undefined) {
-      node = this.root;
-    }
-
+  getDepth(node: TNode | null = this.root): number {
     if (node === null) {
       return 0;
     }
@@ -119,12 +115,17 @@ class BinaryTree {
     return Math.max(leftDepth, rightDepth);
   }
 
-  isBalanced() {
-    if (this.root === null) {
+  isBalanced(node: TNode | null = this.root): boolean {
+    if (node === null) {
       return true;
     }
 
-    return this.getDepth(this.root.left) - this.getDepth(this.root.right) <= 1;
+    if (this.isBalanced(node.left) && this.isBalanced(node.right)) {
+      const heightDifference = this.getDepth(node.left) - this.getDepth(node.right);
+      return Math.abs(heightDifference) <= 1;
+    }
+
+    return false;
   }
 }
 
