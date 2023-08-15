@@ -157,6 +157,16 @@ class BinaryTree {
     return node;
   }
 
+  clone(node: TNode | null = this.root): BinaryTree {
+    const clone = new BinaryTree();
+    if (node !== null) {
+      const array = this.toLevelOrderArray(node);
+      clone.buildNewTree(array);
+    }
+
+    return clone;
+  }
+
   equals(other: BinaryTree) {
     if (Object.is(other, this)) {
       return true;
