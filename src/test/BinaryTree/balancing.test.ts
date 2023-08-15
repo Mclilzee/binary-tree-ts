@@ -64,14 +64,27 @@ describe("Check if tree is balance", () => {
   })
 })
 
-// describe("Balancing an unbalanced binary tree", () => {
-//   test("Balancing tree on the left side", () => {
-//     const tree = new BinaryTree();
-//     tree.buildNewTree([20, 10, 5])
-//     expect(tree.isBalanced()).toBe(false);
-//
-//     tree.balanceTree();
-//     expect(tree.isBalanced()).toBe(true);
-//   })
-//
-// })
+describe("Balancing an unbalanced binary tree", () => {
+  test("Balancing tree on the left side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10, 5])
+    tree.balanceTree();
+    const actual = tree.toLevelOrderArray();
+    const expected = [5, 10, 20]
+
+    expect(tree.root.value).toBe(10);
+    expect(tree.root.left.value).toBe(5);
+    expect(tree.root.right.value).toBe(20);
+  })
+
+  test("Balancing tree on the right side", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([5, 10, 20])
+    tree.balanceTree();
+
+    expect(tree.root.value).toBe(10);
+    expect(tree.root.left.value).toBe(5);
+    expect(tree.root.right.value).toBe(20);
+  })
+
+})

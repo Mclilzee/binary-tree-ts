@@ -131,6 +131,26 @@ class BinaryTree {
 
     return false;
   }
-}
 
+  balanceTree(): void {
+    this.root = this.balanceNode(this.root);
+  }
+
+  balanceNode(node: TNode | null): TNode | null {
+    if (node === null) {
+      return null;
+    }
+
+    const leftDepth = this.getDepth(node.left);
+    const rightDepth = this.getDepth(node.right);
+
+    if (leftDepth > rightDepth) {
+      return this.insert(node.left, new TNode(node.value));
+    } else if (rightDepth > leftDepth) {
+      return this.insert(node.right, new TNode(node.value));
+    }
+
+    return node;
+  }
+}
 export default BinaryTree;
