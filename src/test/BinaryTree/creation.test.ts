@@ -122,3 +122,126 @@ describe("Builds the tree correctly on initalization", () => {
     expect(tree.root.left.right.right.left).toBeNull();
   });
 });;
+
+describe("Cloning tree", () => {
+  test("Cloning returns new tree instance", () => {
+    const tree = new BinaryTree();
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+  })
+
+  test("Cloning tree with null root return clone tree with null root", () => {
+    const tree = new BinaryTree();
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root).toBe(null);
+  })
+
+  test("Returns same root value", () => {
+    const tree = new BinaryTree(5);
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root.value).toBe(5);
+    expect(clone.root).not.toBe(tree.root);
+  })
+
+  test("Returns same values for left links", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 10])
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root.value).toBe(20);
+    expect(clone.root).not.toBe(tree.root);
+    expect(clone.root.left.value).toBe(10);
+    expect(clone.root.left).not.toBe(tree.root.left);
+  })
+
+  test("Return same values for right links", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([2, 10])
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root.value).toBe(2);
+    expect(clone.root).not.toBe(tree.root);
+    expect(clone.root.right.value).toBe(10);
+    expect(clone.root.right).not.toBe(tree.root.right);
+  })
+
+  test("Return both left and right clonse", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 30, 5])
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root.value).toBe(20);
+    expect(clone.root).not.toBe(tree.root);
+    expect(clone.root.right.value).toBe(30);
+    expect(clone.root.right).not.toBe(tree.root.right);
+    expect(clone.root.left.value).toBe(5);
+    expect(clone.root.left).not.toBe(tree.root.left);
+  })
+
+  test("Returns equal complex tree", () => {
+    const tree = new BinaryTree();
+    const numbers = [15, 20, 33, 1, 0, 3, 5, -5, 20, 66, 1, 17];
+    tree.buildNewTree(numbers);
+
+    const clone = tree.clone();
+
+    expect(tree).not.toBe(clone);
+    expect(clone.root.value).toBe(15);
+    expect(clone.root).not.toBe(tree.root);
+    expect(clone.root.right.value).toBe(20);
+    expect(clone.root.right).not.toBe(tree.root.right);
+    expect(clone.root.right.right.value).toBe(33);
+    expect(clone.root.right.right).not.toBe(tree.root.right.right);
+    expect(clone.root.right.right.left).toBeNull();
+    expect(clone.root.right.right.right.value).toBe(66);
+    expect(clone.root.right.right.right).not.toBe(tree.root.right.right.right);
+    expect(clone.root.right.right.right.right).toBeNull();
+    expect(clone.root.right.right.right.left).toBeNull();
+    expect(clone.root.right.left.value).toBe(17);
+    expect(clone.root.right.left).not.toBe(tree.root.right.left);
+    expect(clone.root.right.left.right).toBeNull();
+    expect(clone.root.right.left.left).toBeNull();
+    expect(clone.root.left.value).toBe(1);
+    expect(clone.root.left).not.toBe(tree.root.left);
+    expect(clone.root.left.left.value).toBe(0);
+    expect(clone.root.left.left).not.toBe(tree.root.left.left);
+    expect(clone.root.left.left.right).toBeNull();
+    expect(clone.root.left.left.left.value).toBe(-5);
+    expect(clone.root.left.left.left).not.toBe(tree.root.left.left.left);
+    expect(clone.root.left.left.left.right).toBeNull();
+    expect(clone.root.left.left.left.left).toBeNull();
+    expect(clone.root.left.right.value).toBe(3);
+    expect(clone.root.left.right).not.toBe(tree.root.left.right);
+    expect(clone.root.left.right.left).toBeNull();
+    expect(clone.root.left.right.right.value).toBe(5);
+    expect(clone.root.left.right.right).not.toBe(tree.root.left.right.right);
+    expect(clone.root.left.right.right.right).toBeNull();
+    expect(clone.root.left.right.right.left).toBeNull();
+  })
+
+  test("Able to clone nodes", () => {
+    const tree = new BinaryTree();
+    const numbers = [10, 5, 20, 15, 30, 8, 0, 22, 6];
+    tree.buildNewTree(numbers);
+    const node = tree.root.right;
+
+    const clone = tree.clone(node);
+
+    expect(clone.root.value).toBe(20);
+    expect(clone.root).not.toBe(node);
+    expect(clone.root.left.value).toBe(15);
+    expect(clone.root.left).not.toBe(node.left);
+    expect(clone.root.right.value).toBe(30);
+    expect(clone.root.right).not.toBe(node.right);
+    expect(clone.root.right.left.value).toBe(22);
+    expect(clone.root.right.left).not.toBe(node.right.left);
+  })
+})
