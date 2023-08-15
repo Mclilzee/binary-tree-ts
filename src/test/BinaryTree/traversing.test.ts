@@ -67,7 +67,7 @@ describe("Returns the correct Node object if exists", () => {
   })
 })
 
-describe("Tree to array return correct levelOrder aray", () => {
+describe("Tree to array return correct levelOrder array", () => {
   const tree = new BinaryTree();
 
   test("Return empty array if tree is empty", () => {
@@ -80,7 +80,7 @@ describe("Tree to array return correct levelOrder aray", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(1);
-    expect(array[0]).toBe(tree.root);
+    expect(array[0]).toBe(tree.root.value);
   })
 
   test("Return correct array including root right link", () => {
@@ -88,8 +88,8 @@ describe("Tree to array return correct levelOrder aray", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(2);
-    expect(array[0]).toBe(tree.root);
-    expect(array[1]).toBe(tree.root.right);
+    expect(array[0]).toBe(tree.root.value);
+    expect(array[1]).toBe(tree.root.right.value);
   })
 
   test("Return coect aay including root left link", () => {
@@ -97,8 +97,8 @@ describe("Tree to array return correct levelOrder aray", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(2);
-    expect(array[0]).toBe(tree.root);
-    expect(array[1]).toBe(tree.root.left);
+    expect(array[0]).toBe(tree.root.value);
+    expect(array[1]).toBe(tree.root.left.value);
   })
 
   test("Return array containting both left and right link", () => {
@@ -106,9 +106,9 @@ describe("Tree to array return correct levelOrder aray", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(3);
-    expect(array[0]).toBe(tree.root);
-    expect(array[1]).toBe(tree.root.left);
-    expect(array[2]).toBe(tree.root.right);
+    expect(array[0]).toBe(tree.root.value);
+    expect(array[1]).toBe(tree.root.left.value);
+    expect(array[2]).toBe(tree.root.right.value);
   })
 
   test("Return correct level links, in complex tree", () => {
@@ -116,15 +116,15 @@ describe("Tree to array return correct levelOrder aray", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(9);
-    expect(array[0]).toBe(tree.root);
-    expect(array[1]).toBe(tree.root.left);
-    expect(array[2]).toBe(tree.root.right);
-    expect(array[3]).toBe(tree.root.left.left);
-    expect(array[4]).toBe(tree.root.left.right);
-    expect(array[5]).toBe(tree.root.right.left);
-    expect(array[6]).toBe(tree.root.right.right);
-    expect(array[7]).toBe(tree.root.left.left.left);
-    expect(array[8]).toBe(tree.root.right.right.left);
+    expect(array[0]).toBe(tree.root.value);
+    expect(array[1]).toBe(tree.root.left.value);
+    expect(array[2]).toBe(tree.root.right.value);
+    expect(array[3]).toBe(tree.root.left.left.value);
+    expect(array[4]).toBe(tree.root.left.right.value);
+    expect(array[5]).toBe(tree.root.right.left.value);
+    expect(array[6]).toBe(tree.root.right.right.value);
+    expect(array[7]).toBe(tree.root.left.left.left.value);
+    expect(array[8]).toBe(tree.root.right.right.left.value);
   })
 
   describe("Find correct depth of each node", () => {

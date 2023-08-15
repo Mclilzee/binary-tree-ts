@@ -81,18 +81,21 @@ class BinaryTree {
     return null;
   }
 
-  toLevelOrderArray(): TNode[] {
+  toLevelOrderArray(node: TNode | null = this.root): number[] {
     let array: TNode[] = [];
-    const extract: TNode[] = [];
-    if (this.root !== null) {
-      array.push(this.root);
+    const extract: number[] = [];
+
+    if (node === null) {
+      return [];
     }
+
+    array.push(node);
 
     while (array.length > 0) {
       const node = array[0];
       array = array.splice(1);
 
-      extract.push(node);
+      extract.push(node.value);
 
       if (node.left !== null) {
         array.push(node.left);
