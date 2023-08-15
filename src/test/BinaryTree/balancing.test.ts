@@ -69,12 +69,10 @@ describe("Balancing an unbalanced binary tree", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([20, 10, 5])
     tree.balanceTree();
-    const actual = tree.toLevelOrderArray();
-    const expected = [5, 10, 20]
 
-    expect(tree.root.value).toBe(10);
-    expect(tree.root.left.value).toBe(5);
-    expect(tree.root.right.value).toBe(20);
+    const other = new BinaryTree();
+    other.buildNewTree([10, 5, 20]);
+    expect(tree.equals(other)).toBe(true);
   })
 
   test("Balancing tree on the right side", () => {
@@ -82,9 +80,18 @@ describe("Balancing an unbalanced binary tree", () => {
     tree.buildNewTree([5, 10, 20])
     tree.balanceTree();
 
-    expect(tree.root.value).toBe(10);
-    expect(tree.root.left.value).toBe(5);
-    expect(tree.root.right.value).toBe(20);
+    const other = new BinaryTree();
+    other.buildNewTree([10, 5, 20]);
+    expect(tree.equals(other)).toBe(true);
   })
 
+  test("Balancing tree works when both links exist", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([5, 10, 20, 30, 40])
+    tree.balanceTree();
+
+    const other = new BinaryTree();
+    other.buildNewTree([20, 10, 30, 5, 40]);
+    expect(tree.equals(other)).toBe(true);
+  })
 })

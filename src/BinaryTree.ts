@@ -147,7 +147,8 @@ class BinaryTree {
     if (leftDepth > rightDepth) {
       return this.insert(node.left, new TNode(node.value));
     } else if (rightDepth > leftDepth) {
-      return this.insert(node.right, new TNode(node.value));
+      node.right = node;
+      return node.right;
     }
 
     return node;
