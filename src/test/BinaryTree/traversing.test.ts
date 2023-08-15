@@ -169,3 +169,55 @@ describe("Tree to array return correct levelOrder aray", () => {
     })
   })
 });
+
+describe("Tree are equal if they have same nodes values", () => {
+
+  test("Trees are equal if they are the same instance", () => {
+
+    const tree = new BinaryTree();
+    const other = tree;
+
+    expect(tree.equals(other)).toBe(true);
+  })
+
+  test("Trees are equal if their roots are null", () => {
+    const tree = new BinaryTree();
+    const other = new BinaryTree();
+
+    expect(tree.equals(other)).toBe(true);
+  })
+
+  test("Trees are equal with equal values", () => {
+    const tree = new BinaryTree();
+    const other = new BinaryTree();
+
+    tree.buildNewTree([0]);
+    other.buildNewTree([0]);
+    expect(tree.equals(other)).toBe(true);
+
+    tree.buildNewTree([0, 2, 3]);
+    other.buildNewTree([0, 2, 3, 2]);
+    expect(tree.equals(other)).toBe(true);
+
+    tree.buildNewTree([0, 5, 10, 23, 99, 80, 20, 15, -5, 200]);
+    other.buildNewTree([0, 5, 10, 23, 99, 80, 20, 15, -5, 200]);
+    expect(tree.equals(other)).toBe(true);
+  })
+
+  test("Trees are not equal if values not the same", () => {
+    const tree = new BinaryTree();
+    const other = new BinaryTree();
+
+    tree.buildNewTree([0]);
+    other.buildNewTree([1]);
+    expect(tree.equals(other)).toBe(false);
+
+    tree.buildNewTree([0, 2, 3]);
+    other.buildNewTree([0, 2, 3, 5]);
+    expect(tree.equals(other)).toBe(false);
+
+    tree.buildNewTree([0, 5, 10, 23, 99, 80, 20, 15, -5, 200]);
+    other.buildNewTree([0, 5, 10, 23, 99, 80, 20, 15, -5, 200, 22]);
+    expect(tree.equals(other)).toBe(false);
+  })
+})

@@ -152,5 +152,25 @@ class BinaryTree {
 
     return node;
   }
+
+  equals(other: BinaryTree) {
+    if (Object.is(other, this)) {
+      return true;
+    }
+
+    return this.nodesAreEqual(this.root, other.root);
+  }
+
+  private nodesAreEqual(first: TNode | null, second: TNode | null): boolean {
+    if (first === null || second === null) {
+      return first === second;
+    }
+
+    if (first.value !== second.value) {
+      return false;
+    }
+
+    return this.nodesAreEqual(first.left, second.left) && this.nodesAreEqual(first.right, second.right);
+  }
 }
 export default BinaryTree;
