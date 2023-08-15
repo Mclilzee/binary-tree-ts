@@ -88,8 +88,8 @@ describe("Tree to array return correct levelOrder array", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(2);
-    expect(array[0]).toBe(tree.root.value);
-    expect(array[1]).toBe(tree.root.right.value);
+    expect(array[0]).toBe(0);
+    expect(array[1]).toBe(5);
   })
 
   test("Return coect aay including root left link", () => {
@@ -97,8 +97,8 @@ describe("Tree to array return correct levelOrder array", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(2);
-    expect(array[0]).toBe(tree.root.value);
-    expect(array[1]).toBe(tree.root.left.value);
+    expect(array[0]).toBe(10);
+    expect(array[1]).toBe(5);
   })
 
   test("Return array containting both left and right link", () => {
@@ -106,9 +106,9 @@ describe("Tree to array return correct levelOrder array", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(3);
-    expect(array[0]).toBe(tree.root.value);
-    expect(array[1]).toBe(tree.root.left.value);
-    expect(array[2]).toBe(tree.root.right.value);
+    expect(array[0]).toBe(10);
+    expect(array[1]).toBe(5);
+    expect(array[2]).toBe(20);
   })
 
   test("Return correct level links, in complex tree", () => {
@@ -116,59 +116,71 @@ describe("Tree to array return correct levelOrder array", () => {
     const array = tree.toLevelOrderArray();
 
     expect(array.length).toBe(9);
-    expect(array[0]).toBe(tree.root.value);
-    expect(array[1]).toBe(tree.root.left.value);
-    expect(array[2]).toBe(tree.root.right.value);
-    expect(array[3]).toBe(tree.root.left.left.value);
-    expect(array[4]).toBe(tree.root.left.right.value);
-    expect(array[5]).toBe(tree.root.right.left.value);
-    expect(array[6]).toBe(tree.root.right.right.value);
-    expect(array[7]).toBe(tree.root.left.left.left.value);
-    expect(array[8]).toBe(tree.root.right.right.left.value);
+    expect(array[0]).toBe(10);
+    expect(array[1]).toBe(5);
+    expect(array[2]).toBe(20);
+    expect(array[3]).toBe(0);
+    expect(array[4]).toBe(8);
+    expect(array[5]).toBe(15);
+    expect(array[6]).toBe(30);
+    expect(array[7]).toBe(-5);
+    expect(array[8]).toBe(22);
   })
 
-  describe("Find correct depth of each node", () => {
-    test("Root depth is 0 if doesn't contain links", () => {
-      const tree = new BinaryTree(5);
-      expect(tree.getDepth()).toBe(0);
-    })
+  test("Returns correct array if node is passed", () => {
+    tree.buildNewTree([10, 5, 20, 15, 30, 8, 0, 22, 6]);
+    const node = tree.root.right;
+    const array = tree.toLevelOrderArray(node);
 
-    test("Depth is 0 if root is null", () => {
-      const tree = new BinaryTree();
-      expect(tree.getDepth()).toBe(0);
-    })
-
-    test("Depth is 1 if right link is extended", () => {
-      const tree = new BinaryTree();
-      tree.buildNewTree([5, 10]);
-      expect(tree.getDepth()).toBe(1);
-    })
-
-    test("Depth is 1 if left link is extended", () => {
-      const tree = new BinaryTree();
-      tree.buildNewTree([10, 5]);
-      expect(tree.getDepth()).toBe(1);
-    })
-
-    test("Depth depends on deepest link on right side if exists", () => {
-      const tree = new BinaryTree();
-      tree.buildNewTree([10, 5, 20, 30]);
-      expect(tree.getDepth()).toBe(2);
-    })
-
-    test("Depth depends on deepeste link on left side if exists", () => {
-      const tree = new BinaryTree();
-      tree.buildNewTree([10, 5, 20, 4]);
-      expect(tree.getDepth()).toBe(2);
-    })
-
-    test("Depth is correct for complex tree", () => {
-      const tree = new BinaryTree();
-      tree.buildNewTree([20, 30, 1, 2, 5, 15, 62, -6, 10, 14, 16, 60])
-      expect(tree.getDepth()).toBe(6);
-    })
+    expect(array.length).toBe(4);
+    expect(array[0]).toBe(20);
+    expect(array[1]).toBe(15);
+    expect(array[2]).toBe(30);
+    expect(array[3]).toBe(22);
   })
 });
+
+describe("Find correct depth of each node", () => {
+  test("Root depth is 0 if doesn't contain links", () => {
+    const tree = new BinaryTree(5);
+    expect(tree.getDepth()).toBe(0);
+  })
+
+  test("Depth is 0 if root is null", () => {
+    const tree = new BinaryTree();
+    expect(tree.getDepth()).toBe(0);
+  })
+
+  test("Depth is 1 if right link is extended", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([5, 10]);
+    expect(tree.getDepth()).toBe(1);
+  })
+
+  test("Depth is 1 if left link is extended", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([10, 5]);
+    expect(tree.getDepth()).toBe(1);
+  })
+
+  test("Depth depends on deepest link on right side if exists", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([10, 5, 20, 30]);
+    expect(tree.getDepth()).toBe(2);
+  })
+
+  test("Depth depends on deepeste link on left side if exists", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([10, 5, 20, 4]);
+    expect(tree.getDepth()).toBe(2);
+  })
+
+  test("Depth is correct for complex tree", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([20, 30, 1, 2, 5, 15, 62, -6, 10, 14, 16, 60])
+    expect(tree.getDepth()).toBe(6);
+  })
+})
 
 describe("Tree are equal if they have same nodes values", () => {
 
