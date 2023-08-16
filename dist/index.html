@@ -17,12 +17,12 @@
     <button class="balance-button"></button>
     <form class="create-tree">
       <label class="array-explain" for="values-array">Choose your numbers, separated by a space</label>
-      <input id="values-array" type="text" placeholder="Example: 23 12 3 9" name="text-array" required
+      <input class="array" id="values-array" type="text" placeholder="Example: 23 12 3 9" name="text-array" required
         pattern="(\d ?)+">
       <input type="submit" name="submit" value="Create Tree">
     </form>
     <form class="add-new-value">
-      <input id="value-add-field" type="number" placeholder="Value" name="value" required min="0" max="99">
+      <input class="add-value" type="number" placeholder="Value" name="value" required min="0" max="99">
       <input type="submit" name="submit" value="Add Value">
     </form>
     <button class="remove-button">Remove Selected</button>

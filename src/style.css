@@ -87,7 +87,7 @@ html, body {
 }
 
 .controls > .title {
-  font-size: 1.2rem;
+  font-size: min(1.2rem, 3vw);
   text-align: center;
   margin: 0;
   width: 60%;
@@ -101,23 +101,10 @@ input[type=submit]{
   cursor:pointer;
 }
 
-form {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-  gap: 5px;
-}
-
-form.create-tree > .array-explain {
-  display: flex;
-  justify-content: center;
-  grid-column: span 2;
-  text-align: center;
-}
-
 .controls > .balance-button {
   margin: auto;
   color: white;
-  font-size: 1.2rem;
+  font-size: min(1.2rem, 4vw);
 }
 
 .balance-button.balanced {
@@ -132,10 +119,36 @@ form.create-tree > .array-explain {
   background-color: #1e3c1e;
 }
 
+form {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px;
+}
+
+form.create-tree > .array-explain {
+  display: flex;
+  justify-content: center;
+  grid-column: span 2;
+  text-align: center;
+  font-size: min(1.2rem, 4vw);
+}
+
+input[type=text].array {
+  width: 60vw;
+}
+
+input[type=text],
+input[type=number] {
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: min(1rem, 3.5vw);
+}
+
 .controls > .remove-button {
   background-color: #220080;
   color: white;
-  font-size: 1rem;
+  font-size: min(1rem, 3.5vw);
   font-weight: bold;
 }
 
