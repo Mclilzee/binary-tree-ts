@@ -1,7 +1,7 @@
 import BinaryTree from "../BinaryTree";
 import LineCord from "../LineCord";
 import TNode from "../TNode";
-import { binaryTreeContainer } from "./domElements";
+import { binaryTreeContainer, balanceButton } from "./domElements";
 
 function renderTree(tree: BinaryTree) {
   clearUpBinaryDom();
@@ -11,6 +11,7 @@ function renderTree(tree: BinaryTree) {
 
   drawElemenets(binaryTreeContainer, tree.root);
   drawLines();
+  displayStats(tree);
 }
 
 function clearUpBinaryDom() {
@@ -89,6 +90,19 @@ function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
   line.style.rotate = lineCords.angle + "deg";
 
   binaryTreeContainer.appendChild(line);
+}
+
+function displayStats(tree: BinaryTree) {
+  const balanced = tree.isBalanced();
+  if (balanced) {
+    balanceButton.textContent = "Balanced! :)";
+    balanceButton.classList.add("balanced");
+    balanceButton.classList.remove("unbalanced");
+  } else {
+    balanceButton.textContent = "Tree unbalanced! Click to balance";
+    balanceButton.classList.remove("balanced");
+    balanceButton.classList.add("unbalanced");
+  }
 }
 
 export default renderTree;
