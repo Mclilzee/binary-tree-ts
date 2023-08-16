@@ -73,7 +73,6 @@ html, body {
 .controls {
   display: grid;
   justify-content: center;
-  grid-template-columns: auto auto;
   gap: 5px;
   border-radius: 20px;
   box-shadow: 5px 5px 5px 0px black;
@@ -94,6 +93,7 @@ input[type=submit]{
   border: none;
   font-weight: bold;
   cursor:pointer;
+  font-size: min(0.8rem, 3vw);
 }
 
 .controls > .balance-button,
@@ -182,4 +182,19 @@ input[type=number] {
   width: max(30%, 100px);
   padding: 10px 20px;
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 400px) {
+  form {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  form.create-tree > .array-explain {
+    display: none;
+  }
+
+  .controls {
+    grid-template-columns: auto;
+  }
 }
