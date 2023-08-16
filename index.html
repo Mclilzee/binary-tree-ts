@@ -10,21 +10,22 @@
 <body>
   <div class="binary-tree-container"></div>
   <div class="controls">
-    <button class="balance-button"></button>
-    <h4 class="title">Binary tree was intentionally limited to 100 numbers between 0 and 99 in order for
+    <h3 class="title">Binary tree was intentionally limited to 100 numbers between 0 and 99 in order for
       it to be rendered without being
-      too wide, as this tree is for visualiziation purposes and not meant to be used as a data structure.</h4>
+      too wide, as this tree is for visualiziation purposes and not meant to be used as a data structure.
+    </h3>
+    <button class="balance-button"></button>
     <form class="create-tree">
-      <label for="values-array">Choose your numbers, separated by a space</label>
+      <label class="array-explain" for="values-array">Choose your numbers, separated by a space</label>
       <input id="values-array" type="text" placeholder="Example: 23 12 3 9" name="text-array" required
         pattern="(\d ?)+">
       <input type="submit" name="submit" value="Create Tree">
     </form>
-    <button class="remove-button">Remove Selected</button>
     <form class="add-new-value">
       <input id="value-add-field" type="number" placeholder="Value" name="value" required min="0" max="99">
       <input type="submit" name="submit" value="Add Value">
     </form>
+    <button class="remove-button">Remove Selected</button>
   </div>
 </body>
 
