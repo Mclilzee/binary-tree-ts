@@ -1,6 +1,6 @@
 import { balanceButton } from "../domElements";
 import tree from "../../tree";
-import renderTree from "../renderTree";
+import renderTree from "../rendering/renderTree";
 
 function balanceTreeListener() {
   balanceButton.addEventListener("click", () => {

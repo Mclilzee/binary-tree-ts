@@ -1,5 +1,5 @@
 import { attachEventListeners } from "./dom/eventHandling";
-import renderTree from "./dom/renderTree";
+import renderTree from "./dom/rendering/renderTree";
 import "./style.css";
 import tree from "./tree";
 

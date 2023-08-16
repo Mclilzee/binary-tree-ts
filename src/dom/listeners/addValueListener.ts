@@ -1,6 +1,6 @@
 import tree from "../../tree";
 import { addValueForm } from "../domElements";
-import renderTree from "../renderTree";
+import renderTree from "../rendering/renderTree";
 
 function addValueListner() {
   addValueForm.addEventListener("submit", (e) => {
