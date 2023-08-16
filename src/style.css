@@ -6,9 +6,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-image: url("../public/stacked-waves-haikei.svg");
+  background-image: url("../public/svg/stacked-waves-haikei.svg");
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .binary-tree-container,
@@ -32,10 +33,10 @@ html, body {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  background-image: url("../public/node.svg");
+  background-image: url("../public/svg/node.svg");
   background-repeat: no-repeat;
   background-size: 100%;
-  font-size: min(1rem, 4vw);
+  font-size: min(1.1rem, 4vw);
 }
 
 .value:hover {
@@ -136,6 +137,7 @@ form.create-tree > .array-explain {
   grid-column: span 2;
   text-align: center;
   font-size: min(1.2rem, 4vw, 4vh);
+  font-weight: bold;
 }
 
 input[type=text],
@@ -174,7 +176,7 @@ input[type=number] {
 }
 
 .disclaimer-display > .box > .message {
-  font-size: min(1.5rem, 4vw, 4vh);
+  font-size: min(1.5rem, 3.5vw, 3.5vh);
   text-align: center;
   color: white;
   font-weight: bold;
