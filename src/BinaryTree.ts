@@ -136,24 +136,25 @@ class BinaryTree {
   }
 
   balanceTree(): void {
-    this.root = this.balanceNode(this.root);
+    if (this.root === null) {
+      return;
+    }
+
+    const values = this.toLevelOrderArray();
+    values.sort((a, b) => a - b);
+    this.root = this.buildNewBalancedTree(values);
   }
 
-  balanceNode(node: TNode | null): TNode | null {
-    if (node === null) {
+  // recieved array should be sorted
+  private buildNewBalancedTree(values: number[]): TNode | null {
+    if (values.length === 0) {
       return null;
     }
 
-    const leftDepth = this.getDepth(node.left);
-    const rightDepth = this.getDepth(node.right);
-
-    if (leftDepth > rightDepth) {
-      return this.insert(node.left, new TNode(node.value));
-    } else if (rightDepth > leftDepth) {
-      node.right = node;
-      return node.right;
-    }
-
+    const middleIndex = Math.floor(values.length / 2);
+    const node = new TNode(values[middleIndex]);
+    node.left = this.buildNewBalancedTree(values.slice(0, middleIndex))
+    node.right = this.buildNewBalancedTree(values.slice(middleIndex + 1));
     return node;
   }
 

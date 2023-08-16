@@ -68,30 +68,37 @@ describe("Balancing an unbalanced binary tree", () => {
   test("Balancing tree on the left side", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([20, 10, 5])
-    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(false);
 
-    const other = new BinaryTree();
-    other.buildNewTree([10, 5, 20]);
-    expect(tree.equals(other)).toBe(true);
+    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(true);
   })
 
   test("Balancing tree on the right side", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([5, 10, 20])
-    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(false);
 
-    const other = new BinaryTree();
-    other.buildNewTree([10, 5, 20]);
-    expect(tree.equals(other)).toBe(true);
+    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(true);
   })
 
   test("Balancing tree works when both links exist", () => {
     const tree = new BinaryTree();
     tree.buildNewTree([5, 10, 20, 30, 40])
-    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(false);
 
-    const other = new BinaryTree();
-    other.buildNewTree([20, 10, 30, 5, 40]);
-    expect(tree.equals(other)).toBe(true);
+    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(true);
   })
+
+  test("Balance complex tree", () => {
+    const tree = new BinaryTree();
+    tree.buildNewTree([300, 400, 500, 450, 600, 50, 60, 70, 80, 90, 65, 64, 40, 30, 20, 25, 35, 45, 43, 42, 46, 55, 53, 180, 150, 170, 160, 190, 195, 140, 130, 250, 240, 350]);
+
+    expect(tree.isBalanced()).toBe(false);
+
+    tree.balanceTree();
+    expect(tree.isBalanced()).toBe(true);
+  });
 })
