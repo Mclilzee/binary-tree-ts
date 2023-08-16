@@ -4,7 +4,6 @@ import renderTree from "../rendering/renderTree";
 
 function balanceTreeListener() {
   balanceButton.addEventListener("click", () => {
-    console.log("clicked");
     if (tree.isBalanced()) {
       return;
     }
