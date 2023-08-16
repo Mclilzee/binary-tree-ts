@@ -70,12 +70,12 @@ html, body {
   background-color: red;
 }
 .controls {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  gap: 5px;
   border-radius: 20px;
   box-shadow: 5px 5px 5px 0px black;
-  gap: 20px;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -91,13 +91,22 @@ input[type=submit]{
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
+  font-weight: bold;
   cursor:pointer;
 }
 
-.controls > .balance-button {
-  margin: auto;
+.controls > .balance-button,
+.controls > .remove-button {
   color: white;
-  font-size: min(1.2rem, 4vw);
+  font-size: min(1rem, 3.5vw);
+}
+
+.controls > .remove-button {
+  background-color: #220080;
+}
+
+.controls > .remove-button:hover {
+  background-color: purple;
 }
 
 .balance-button.balanced {
@@ -112,9 +121,11 @@ input[type=submit]{
   background-color: #1e3c1e;
 }
 
+
 form {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 6fr 1fr;
+  grid-column: span 2;
   gap: 5px;
 }
 
@@ -126,27 +137,12 @@ form.create-tree > .array-explain {
   font-size: min(1.2rem, 4vw);
 }
 
-input[type=text].array {
-  width: 60vw;
-}
-
 input[type=text],
 input[type=number] {
   text-align: center;
   border-radius: 10px;
   padding: 5px;
   font-size: min(1rem, 3.5vw);
-}
-
-.controls > .remove-button {
-  background-color: #220080;
-  color: white;
-  font-size: min(1rem, 3.5vw);
-  font-weight: bold;
-}
-
-.controls > .remove-button:hover {
-  background-color: purple;
 }
 
 .disclaimer-display {
