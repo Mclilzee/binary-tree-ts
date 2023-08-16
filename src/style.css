@@ -17,10 +17,11 @@ html, body {
   display: grid;
   grid-template-columns: 1fr min(30px, 6vw) 1fr;
   grid-template-rows: min(30px, 7vw) 1fr;
-  height: 100%;
+  height: 500px;
 }
 
 .value {
+  z-index: 1;
   padding: 0;
   justify-self: center;
   grid-column:  2;
@@ -63,7 +64,6 @@ html, body {
 
 .value.selected {
   transform: scale(1.3);
-  z-index: 1;
   color: red;
 }
 
@@ -183,7 +183,7 @@ input[type=number] {
 .disclaimer-display > .box > .confirm {
   width: max(30%, 100px);
   padding: 10px 20px;
-  font-size: 1.2rem;
+  font-size: min(1.2rem, 4vh);
 }
 
 @media only screen and (max-width: 400px) {
