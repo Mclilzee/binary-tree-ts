@@ -11,25 +11,6 @@ html, body {
   background-attachment: fixed;
 }
 
-.controls {
-  display: grid;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px 0px black;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  bottom: 20px;
-  width: 80%;
-  left: 10%;
-  background-color: white;
-  padding: 10px 20px;
-}
-
-.controls > .title {
-  margin: 0;
-}
-
 .binary-tree-container,
 .left-link,
 .right-link {
@@ -87,4 +68,77 @@ html, body {
 
 .line.selected {
   background-color: red;
+}
+.controls {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 0px black;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  width: 80%;
+  left: 10%;
+  background-color: white;
+  padding: 10px 20px;
+}
+
+.controls > .title {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0;
+  width: 60%;
+}
+
+button,
+input[type=submit]{
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor:pointer;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  gap: 5px;
+}
+
+form.create-tree > .array-explain {
+  display: flex;
+  justify-content: center;
+  grid-column: span 2;
+  text-align: center;
+}
+
+.controls > .balance-button {
+  margin: auto;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.balance-button.balanced {
+  background-color: green;
+}
+
+.balance-button.unbalanced {
+  background-color: red;
+}
+
+.controls > .balance-button:hover {
+  background-color: #1e3c1e;
+}
+
+.controls > .remove-button {
+  background-color: #220080;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.controls > .remove-button:hover {
+  background-color: purple;
 }
