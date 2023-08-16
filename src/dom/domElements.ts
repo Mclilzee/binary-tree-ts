@@ -5,5 +5,6 @@ const createTreeForm = document.querySelector("form.create-tree") as HTMLFormEle
 const balanceButton = document.querySelector(".controls > .balance-button") as HTMLButtonElement;
 const confirmDisclaimerButton = document.querySelector(".disclaimer-display > .box > .confirm") as HTMLButtonElement;
 const disclaimerDisplay = document.querySelector(".disclaimer-display") as HTMLDivElement;
+const linesContainer = document.querySelector(".lines-container") as HTMLDivElement;
 
-export { binaryTreeContainer, removeButton, addValueForm, createTreeForm, balanceButton, confirmDisclaimerButton, disclaimerDisplay }
+export { binaryTreeContainer, removeButton, addValueForm, createTreeForm, balanceButton, confirmDisclaimerButton, disclaimerDisplay, linesContainer }

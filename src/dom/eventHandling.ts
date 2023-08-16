@@ -14,4 +14,4 @@ function attachEventListeners() {
   confirmDisclaimerListener();
 }
 
-export { attachEventListeners };
+export default attachEventListeners;

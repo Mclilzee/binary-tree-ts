@@ -1,7 +1,8 @@
 import LineCord from "../../LineCord";
-import { binaryTreeContainer } from "../domElements";
+import { linesContainer } from "../domElements";
 
 function drawLines(): void {
+  removeLines();
   const values = document.querySelectorAll(".value");
   values.forEach(value => {
     let sibling = value.nextElementSibling;
@@ -16,6 +17,12 @@ function drawLines(): void {
       drawLine(value as HTMLDivElement, siblingValue as HTMLDivElement);
     }
   });
+}
+
+function removeLines() {
+  while (linesContainer.firstChild !== null) {
+    linesContainer.removeChild(linesContainer.firstChild);
+  }
 }
 
 function getValueElement(container: HTMLDivElement): HTMLDivElement | null {
@@ -48,7 +55,7 @@ function drawLine(start: HTMLDivElement, end: HTMLDivElement) {
   line.style.height = lineCords.thickness + "px";
   line.style.rotate = lineCords.angle + "deg";
 
-  binaryTreeContainer.appendChild(line);
+  linesContainer.appendChild(line);
 }
 
 export default drawLines;
