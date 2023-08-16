@@ -15,8 +15,8 @@ html, body {
 .left-link,
 .right-link {
   display: grid;
-  grid-template-columns: 1fr 30px 1fr;
-  grid-template-rows: 30px 1fr;
+  grid-template-columns: 1fr min(30px, 6vw) 1fr;
+  grid-template-rows: min(30px, 7vw) 1fr;
   height: 100%;
 }
 
@@ -34,6 +34,7 @@ html, body {
   background-image: url("../public/node.svg");
   background-repeat: no-repeat;
   background-size: 100%;
+  font-size: min(1rem, 4vw);
 }
 
 .value:hover {
@@ -120,7 +121,6 @@ input[type=submit]{
 .controls > .balance-button:hover {
   background-color: #1e3c1e;
 }
-
 
 form {
   display: grid;
